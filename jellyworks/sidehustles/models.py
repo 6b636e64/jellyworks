@@ -12,7 +12,7 @@ class publicProfile(models.Model):
 
     def __str__(self):
         """String for representing the Model object."""
-        return self.displayname
+        return self.public_displayname
 
 class User(models.Model):
     """Model representing a private student (user account)"""
