@@ -31,7 +31,7 @@ for i in range(1,10):
     user_lname = fake.last_name()
     user_unique_email = fake.ascii_free_email()
     user_password = fake.password()
-    user = user(user_fname = user_fname, user_lname = user_lname, user_unique_email = user_unique_email, user_password = user_password)
+    user = User(user_fname = user_fname, user_lname = user_lname, user_unique_email = user_unique_email, user_password = user_password)
     user.save()
     users.append(user)   
   
@@ -44,7 +44,7 @@ for i in range(1, 10):
     review_star_count = fake.random_number() 
     review_text = fake.text(1000)
     review_date_posted = fake.date()
-    review = review(review_like_count = review_like_count, review_star_count = review_star_count, review_text = review_text, review_date_posted = review_date_posted)
+    review = Review(review_like_count = review_like_count, review_star_count = review_star_count, review_text = review_text, review_date_posted = review_date_posted)
     review.save()
     reviews.append(review)
   
@@ -58,7 +58,7 @@ for i in range(1, 10):
     service_location = fake.street_address()
     service_proficiency = fake.random_uppercase_letter()
     service_reviews = fake.text(500)
-    service = services(service_name = service_name, service_cost = service_cost, service_category = service_category, service_location = service_location, 
+    service = Services(service_name = service_name, service_cost = service_cost, service_category = service_category, service_location = service_location, 
                       service_proficiency = service_proficiency, service_reviews = service_reviews)
     service.save()
     services.append(service)
