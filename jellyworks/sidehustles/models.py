@@ -32,14 +32,18 @@ class Reviews(models.Model):
 		
     review_like_count = models.IntegerField()
     review_star_count = models.IntegerField()
-    review_text = models.TextField(help_text = "Type a review")
+    review_text = models.TextField(help_text = "Type a review", default="Macklemore is amazeballs")
     review_date_posted = models.DateField(blank=True)
+    
+    def __str__(self):
+        """String for representing the Model object."""
+        return self.review_text
     
 class Services(models.Model):
     """Model representing a service offered on Sidehustles."""
 
     # A character field for the service name.
-    service_name = models.CharField(max_length=200)
+    service_name = models.CharField(max_length=200, default = "Tupac's 3-Pack Sodas")
 		
     # A integer field for the service cost.
     service_cost = models.IntegerField()
@@ -55,3 +59,7 @@ class Services(models.Model):
     
     # A character field for a review.
     service_reviews = models.TextField(help_text = "Type a review.")
+    
+    def __str__(self):
+        """String for representing the Model object."""
+        return self.service_name
