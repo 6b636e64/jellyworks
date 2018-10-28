@@ -6,10 +6,10 @@ from django.urls import reverse
 class PublicProfile(models.Model):
     """Model representing a public profile."""
 
-    fname = models.CharField(max_length=50, help_text="First name")
-    lname = models.CharField(max_length=50, help_text="Last name")
-    displayname = models.CharField(max_length=30, help_text="Display name", unique=True)
-    
+    public_fname = models.CharField(max_length=50, help_text="First name")
+    public_lname = models.CharField(max_length=50, help_text="Last name")
+    public_displayname = models.CharField(max_length=30, help_text="Display name", unique=True)
+    public_email = models.ForeignKey()
 
     def __str__(self):
         """String for representing the Model object."""
@@ -18,10 +18,10 @@ class PublicProfile(models.Model):
 class User(models.Model):
     """Model representing a private student (user account)"""
 
-    fname = models.CharField(max_length=50, help_text="First name")
-    lname = models.CharField(max_length=50, help_text="Last name")
-    unique_email = models.CharField(max_length=100, primary_key=True)
-    password = models.CharField(max_length=50)
+    user_fname = models.CharField(max_length=50, help_text="First name")
+    user_lname = models.CharField(max_length=50, help_text="Last name")
+    user_unique_email = models.CharField(max_length=100, primary_key=True)
+    user_password = models.CharField(max_length=50)
     
     def __str__(self):
         """String for representing the Model object."""
@@ -30,10 +30,10 @@ class User(models.Model):
 class Reviews(models.Model):
     """Model representing a customer review."""
 		
-    like_count = models.IntegerField()
-    star_count = models.IntegerField()
+    review_like_count = models.IntegerField()
+    review_star_count = models.IntegerField()
     review_text = models.TextField(help_text = "Type a review")
-    date_posted = models.DateField(null=True, blank=True)
+    review_date_posted = models.DateField(null=True, blank=True)
     
 class Services(models.Model):
     """Model representing a service offered on Sidehustles."""
