@@ -5,82 +5,88 @@ from datetime import timedelta
 from django.contrib.auth.models import User
 from faker import Faker
 
-from Sidehustles.models import PublicProfile,  Services, PrivateStudent, Reviews
+from Sidehustles.models import PublicProfile, Services, User, Reviews
 
 fake = Faker()
-
-# Create Private Student 
-privatestudent = []
-  ps_fname = fake.first_name()
-  ps_lname = fake.last_name()
-  ps_email = fake.ascii_free_email()
-  ps_password = fake.password()
-	student = privatestudent(
-        first_name=ps_fname, last_name=ps_lname, ascii_free_email = p_email, ps_password = password
-    )
-  privatestudents.save()
-  privatestudents.append(privatestudent)
-
-# Create Public Profile
-publicProfile = []
+  
+# Create 10 fake Public Profile
+publicProfiles = []
 for i in range(1, 10):
-    p_fname = fake.first_name()
-    p_lname = fake.last_name()
-    p_display = fake.display_name()
-    p_email = fake.ascii_free_email()
+    public_fname = fake.first_name()
+    public_lname = fake.last_name()
+    public_displayname = fake.display_name()
+    public_email = fake.ascii_free_email()
     profile = publicProfile(
-        first_name=p_fname, last_name=p_lname, display_name = p_display, ascii_free_email = p_email
+        first_name = public_fname, public_lname = public_lname, public_displayname = public_displayname,  public_email =  public_email
     )
     publicProfile.save()
     publicProfiles.append(publicProfile)
 
 
+ # Create 10 fake users 
+users = []
+for i in range(1,10):
+	user_fname = fake.first_name()
+  user_lname = fake.last_name()
+  user_unique_email = fake.ascii_free_email()
+  user_password = fake.password()
+  user = user(user_fname = user_fname, user_lname = user_lname, user_unique_email = user_unique_email, user_password = user_password)
+  user.save()
+  users.append(user)   
+  
+
 # Create Reviews
 reviews = []
 for i in range(1, 10):
-    a_title = fake.text(50)
-    a_author = authors[fake.random_int(0, len(privatestudent)) - 1]
-    a_review = fake.text(1000)
-    review = Review(title=a_title, author=a_author, review=a_review)
-    review.save()
+    
+    review_like_count = fake.random_number()
+    review_star_count = fake.random_number() 
+    review_text = fake.text(1000)
+    review_date_posted = fake.date()
+    review = review(review_like_count = review_like_count, review_star_count = review_star_count, review_text = review_text, review_date_posted = review_date_posted)
     review.save()
     reviews.append(review)
-
+  
+  
 # Create Services
 services = []
-for i in range(1, 400):
-    a_services = books[fake.random_int(0, len(books)) - 1]
-    a_imprint = fake.text(200)
-    a_status = "a"
-    instance = BookInstance(book=a_book, imprint=a_imprint, status=a_status)
-    instance.save()
-    instances.append(instance)
+for i in range(1, 10):
+    service_name = fake.text(200)
+    service_cost = fake.random.number()
+    service_category = fake.text(200)
+    service_location = fake.street_address()
+    service_proficiency = fake.random_uppercase_letter()
+    service_reviews = fake.text(500)
+    service = service(service_name = service_name, service_cost = service_cost, service_category = service_category, service_location = service_location, service_location = service_location, 
+                      service_proficiency = service_proficiency, service_reviews = service_reviews)
+    service.save()
+    services.append(service)
 
-print("Genre:")
-for g in Genre.objects.all():
-    print(g)
+print("User:")
+for u in User.objects.all():
+    print(u)
 
-print("\nAuthor:")
-for a in Author.objects.all():
-    print(a)
+print("\nPublic Profile:")
+for p in publicProfile.objects.all():
+    print(p)
 
-print("\nBook:")
-for b in Book.objects.all():
-    print(b)
+print("\nReviews:")
+for r in reviews.objects.all():
+    print(r)
 
-print("\nBookInstance:")
-for i in BookInstance.objects.all():
-    print(i)
+print("\nServices:")
+for s in services.objects.all():
+    print(s)
 
 # Retrieve a random Service from model and print it.
-books_count = Book.objects.count()
-book = Book.objects.all()[fake.random_int(0, books_count - 1)]
+services_count = services.objects.count()
+service = services.objects.all()[fake.random_int(0, services_count - 1)]
 
-print("\nExample Book:")
-print(f"Title: {book.title}")
-print(f"Author: {book.author}")
-print(f"ISBN: {book.isbn}")
-print(f"Summary:\n{textwrap.fill(book.summary, 77)}")
+print("\nExample Service:")
+print(f"User: {service.user}")
+print(f"Public Profile: {service.profile}")
+print(f"Review: {service.review}")
+print(f"Service: {service.service_name}")
 
 
 username = "admin"
