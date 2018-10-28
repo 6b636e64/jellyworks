@@ -14,7 +14,7 @@ publicProfiles = []
 for i in range(1, 10):
     public_fname = fake.first_name()
     public_lname = fake.last_name()
-    public_displayname = fake.display_name()
+    public_displayname = fake.name()
     public_email = fake.ascii_free_email()
     profile = publicProfile(
         first_name = public_fname, public_lname = public_lname, public_displayname = public_displayname,  public_email =  public_email
