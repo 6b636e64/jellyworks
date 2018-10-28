@@ -53,7 +53,7 @@ for i in range(1, 10):
 services = []
 for i in range(1, 10):
     service_name = fake.text(200)
-    service_cost = fake.random.number()
+    service_cost = 8
     service_category = fake.text(200)
     service_location = fake.street_address()
     service_proficiency = fake.random_uppercase_letter()
