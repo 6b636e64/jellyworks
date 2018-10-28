@@ -5,7 +5,7 @@ from datetime import timedelta
 from django.contrib.auth.models import User
 from faker import Faker
 
-from sidehustles.models import PublicProfile, Services, User, Reviews
+from sidehustles.models import publicProfile, Services, User, Reviews
 
 fake = Faker()
   
