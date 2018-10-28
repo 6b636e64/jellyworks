@@ -9,7 +9,7 @@ class PublicProfile(models.Model):
     fname = models.CharField(max_length=50, help_text="First name")
     lname = models.CharField(max_length=50, help_text="Last name")
     displayname = models.CharField(max_length=30, help_text="Display name", unique=True)
-    email = models.ForeignKey()
+    
 
     def __str__(self):
         """String for representing the Model object."""
