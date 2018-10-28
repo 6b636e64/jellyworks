@@ -3,7 +3,7 @@ from datetime import timedelta
 
 # Create a super user to use the admin site.
 from django.contrib.auth.models import User
-from faker import Faker, faker.providers
+from faker import Faker
 
 from sidehustles.models import publicProfile, Services, User, Reviews
 
