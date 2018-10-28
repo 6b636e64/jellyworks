@@ -57,7 +57,7 @@ for i in range(1, 10):
     service_location = fake.street_address()
     service_proficiency = fake.random_uppercase_letter()
     service_reviews = fake.text(500)
-    service = service(service_name = service_name, service_cost = service_cost, service_category = service_category, service_location = service_location, service_location = service_location, 
+    service = services(service_name = service_name, service_cost = service_cost, service_category = service_category, service_location = service_location, service_location = service_location, 
                       service_proficiency = service_proficiency, service_reviews = service_reviews)
     service.save()
     services.append(service)
@@ -77,10 +77,6 @@ for r in reviews.objects.all():
 print("\nServices:")
 for s in services.objects.all():
     print(s)
-
-# Retrieve a random Service from model and print it.
-services_count = services.objects.count()
-service = services.objects.all()[fake.random_int(0, services_count - 1)]
 
 print("\nExample Service:")
 print(f"User: {service.user}")
