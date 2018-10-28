@@ -20,8 +20,8 @@ for i in range(1, 10):
     profile = publicProfile(
         public_fname = public_fname, public_lname = public_lname, public_displayname = public_displayname,  public_email =  public_email
     )
-    publicProfile.save()
-    publicProfiles.append(publicProfile)
+    profile.save()
+    publicProfiles.append(profile)
 
 
  # Create 10 fake users 
