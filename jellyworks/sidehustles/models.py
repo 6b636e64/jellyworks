@@ -25,7 +25,7 @@ class User(models.Model):
     
     def __str__(self):
         """String for representing the Model object."""
-        return self.unique_email
+        return self.user_unique_email
 
 class Reviews(models.Model):
     """Model representing a customer review."""
