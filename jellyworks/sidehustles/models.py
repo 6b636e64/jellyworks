@@ -33,7 +33,7 @@ class Reviews(models.Model):
     review_like_count = models.IntegerField()
     review_star_count = models.IntegerField()
     review_text = models.TextField(help_text = "Type a review")
-    review_date_posted = models.DateField()
+    review_date_posted = models.DateField(blank=True)
     
 class Services(models.Model):
     """Model representing a service offered on Sidehustles."""
