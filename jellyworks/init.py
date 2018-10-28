@@ -29,10 +29,10 @@ for i in range(1,10):
     user_fname = fake.first_name()
     user_lname = fake.last_name()
     user_unique_email = fake.ascii_free_email()
-  	user_password = fake.password()
-  	user = user(user_fname = user_fname, user_lname = user_lname, user_unique_email = user_unique_email, user_password = user_password)
-  	user.save()
-  	users.append(user)   
+    user_password = fake.password()
+    user = user(user_fname = user_fname, user_lname = user_lname, user_unique_email = user_unique_email, user_password = user_password)
+    user.save()
+    users.append(user)   
   
 
 # Create Reviews
