@@ -18,7 +18,7 @@ for i in range(1, 10):
     public_displayname = fake.name()
     public_email = fake.ascii_free_email()
     profile = publicProfile(
-        first_name = public_fname, public_lname = public_lname, public_displayname = public_displayname,  public_email =  public_email
+        public_fname = public_fname, public_lname = public_lname, public_displayname = public_displayname,  public_email =  public_email
     )
     publicProfile.save()
     publicProfiles.append(publicProfile)
