@@ -57,7 +57,7 @@ for i in range(1, 10):
     service_location = fake.street_address()
     service_proficiency = fake.random_uppercase_letter()
     service_reviews = fake.text(500)
-    service = services(service_name = service_name, service_cost = service_cost, service_category = service_category, service_location = service_location, service_location = service_location, 
+    service = services(service_name = service_name, service_cost = service_cost, service_category = service_category, service_location = service_location, 
                       service_proficiency = service_proficiency, service_reviews = service_reviews)
     service.save()
     services.append(service)
