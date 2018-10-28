@@ -8,7 +8,7 @@ class publicProfile(models.Model):
 
     public_fname = models.CharField(max_length=50, help_text="First name")
     public_lname = models.CharField(max_length=50, help_text="Last name")
-    public_displayname = models.CharField(max_length=30, help_text="Display name", unique=True)
+    public_displayname = models.CharField(max_length=30, help_text="Display name")
     public_email = models.CharField(max_length=50, help_text="Email", blank=True) 
 
     def __str__(self):
@@ -20,7 +20,7 @@ class User(models.Model):
 
     user_fname = models.CharField(max_length=50, help_text="First name")
     user_lname = models.CharField(max_length=50, help_text="Last name")
-    user_unique_email = models.CharField(max_length=100, primary_key=True)
+    user_unique_email = models.CharField(max_length=100)
     user_password = models.CharField(max_length=50)
     
     def __str__(self):
