@@ -3,13 +3,12 @@ import uuid
 from django.db import models
 from django.urls import reverse
 
-class PublicProfile(models.Model):
+class publicProfile(models.Model):
     """Model representing a public profile."""
 
     public_fname = models.CharField(max_length=50, help_text="First name")
     public_lname = models.CharField(max_length=50, help_text="Last name")
     public_displayname = models.CharField(max_length=30, help_text="Display name", unique=True)
-    public_email = models.ForeignKey()
 
     def __str__(self):
         """String for representing the Model object."""
