@@ -30,8 +30,8 @@ class User(models.Model):
 class Reviews(models.Model):
     """Model representing a customer review."""
 		
-    review_like_count = models.IntegerField(default = 8)
-    review_star_count = models.IntegerField(default = 8)
+    review_like_count = models.IntegerField()
+    review_star_count = models.IntegerField()
     review_text = models.TextField(help_text = "Type a review", default="Macklemore is amazeballs")
     review_date_posted = models.DateField(default="1/1/18")
     
@@ -46,7 +46,7 @@ class Services(models.Model):
     service_name = models.CharField(max_length=200, default = "Tupac's 3-Pack Sodas")
 		
     # A integer field for the service cost.
-    service_cost = models.IntegerField(default = 8)
+    service_cost = models.IntegerField()
     
     # A character field for the service category.
     service_category = models.CharField(max_length=200, default = "J Cole")
@@ -55,7 +55,7 @@ class Services(models.Model):
     service_location = models.CharField(max_length=200, default = "Grandmaster Flash")
     
     # A integer field to indicate proficieny (scale to be determined)
-    service_proficiency = models.IntegerField(default = 8)
+    service_proficiency = models.IntegerField()
     
     # A character field for a review.
     service_reviews = models.TextField(help_text = "Type a review.")
