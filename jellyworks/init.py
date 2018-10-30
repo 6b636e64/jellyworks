@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 from faker import Faker
 from faker.providers import person, internet, date_time, address, lorem
 
-from sidehustles.models import publicProfile, Services, appUser, Reviews
+from sidehustles.models import Services, publicProfile, appUser, Reviews
 
 fake = Faker()
   
@@ -40,8 +40,8 @@ for i in range(1,10):
 reviews = []
 for i in range(1, 10):
     
-    review_like_count = fake.random_number(digits=None, fix_len=False)
-    review_star_count = fake.random_number(digits=None, fix_len=False) 
+    review_like_count = int(fake.random_number())
+    review_star_count = fake.random_number(digits=None, fix_len=False)
     review_text = fake.text(1000)
     review_date_posted = fake.date()
     review = Reviews(review_like_count = review_like_count, review_star_count = review_star_count, review_text = review_text, review_date_posted = review_date_posted)
@@ -53,15 +53,15 @@ for i in range(1, 10):
 services = []
 for i in range(1, 10):
     service_name = fake.text(200)
-    service_cost = fake.random_number(digits=None, fix_len=False)
+    service_cost = int(fake.random_number())
     service_category = fake.text(200)
     service_location = fake.street_address()
-    service_proficiency = fake.random_uppercase_letter()
+    service_proficiency = int(fake.random_number())
     service_reviews = fake.text(500)
-    service = Services(service_name = service_name, service_cost = service_cost, service_category = service_category, service_location = service_location, 
-                      service_proficiency = service_proficiency, service_reviews = service_reviews)
+    service = Services(service_name = service_name, service_cost = service_cost, service_category = service_category, service_location = service_location, service_proficiency = service_proficiency, service_reviews = service_reviews)
     service.save()
     services.append(service)
+
 
 print("User:")
 for u in appUser.objects.all():
@@ -72,18 +72,19 @@ for p in publicProfile.objects.all():
     print(p)
 
 print("\nReviews:")
-for r in reviews.objects.all():
+for r in Reviews.objects.all():
     print(r)
 
 print("\nServices:")
-for s in services.objects.all():
+for s in Services.objects.all():
     print(s)
-
+'''
 print("\nExample Service:")
 print(f"User: {service.user}")
 print(f"Public Profile: {service.profile}")
 print(f"Review: {service.review}")
 print(f"Service: {service.service_name}")
+'''
 
 username = "admin"
 password = "admin"
