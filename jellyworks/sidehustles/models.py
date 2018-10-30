@@ -15,7 +15,7 @@ class publicProfile(models.Model):
         """String for representing the Model object."""
         return self.public_displayname
 
-class User(models.Model):
+class appUser(models.Model):
     """Model representing a private student (user account)"""
 
     user_fname = models.CharField(max_length=50, help_text="First name", default="Kendrick")

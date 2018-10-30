@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 from faker import Faker
 from faker.providers import person, internet, date_time, address, lorem
 
-from sidehustles.models import publicProfile, Services, User, Reviews
+from sidehustles.models import publicProfile, Services, appUser, Reviews
 
 fake = Faker()
   
@@ -31,7 +31,7 @@ for i in range(1,10):
     user_lname = fake.last_name()
     user_unique_email = fake.ascii_free_email()
     user_password = fake.password()
-    user = User(user_fname = user_fname, user_lname = user_lname, user_unique_email = user_unique_email, user_password = user_password)
+    user = appUser(user_fname = user_fname, user_lname = user_lname, user_unique_email = user_unique_email, user_password = user_password)
     user.save()
     users.append(user)   
   
@@ -40,8 +40,8 @@ for i in range(1,10):
 reviews = []
 for i in range(1, 10):
     
-    review_like_count = fake.random_number()
-    review_star_count = fake.random_number() 
+    review_like_count = fake.random_number(digits=None, fix_len=False)
+    review_star_count = fake.random_number(digits=None, fix_len=False) 
     review_text = fake.text(1000)
     review_date_posted = fake.date()
     review = Reviews(review_like_count = review_like_count, review_star_count = review_star_count, review_text = review_text, review_date_posted = review_date_posted)
@@ -53,7 +53,7 @@ for i in range(1, 10):
 services = []
 for i in range(1, 10):
     service_name = fake.text(200)
-    service_cost = fake.random_number()
+    service_cost = fake.random_number(digits=None, fix_len=False)
     service_category = fake.text(200)
     service_location = fake.street_address()
     service_proficiency = fake.random_uppercase_letter()
@@ -64,7 +64,7 @@ for i in range(1, 10):
     services.append(service)
 
 print("User:")
-for u in User.objects.all():
+for u in appUser.objects.all():
     print(u)
 
 print("\nPublic Profile:")
@@ -84,7 +84,6 @@ print(f"User: {service.user}")
 print(f"Public Profile: {service.profile}")
 print(f"Review: {service.review}")
 print(f"Service: {service.service_name}")
-
 
 username = "admin"
 password = "admin"
