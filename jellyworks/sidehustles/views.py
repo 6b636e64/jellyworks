@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.views import generic
 
 # Create your views here.
 
@@ -9,9 +10,9 @@ def index(request):
 
     #Counting the number of public profiles, reviews, and services
 
-    num_publicprofiles = publicProfile.objects.all.count() 
-    num_reviews = Reviews.objects.all.count()
-    num_services = Services.objects.all.count()
+    num_publicprofiles = publicProfile.objects.all().count() 
+    num_reviews = Reviews.objects.all().count()
+    num_services = Services.objects.all().count()
     
     
     context = {
@@ -21,3 +22,6 @@ def index(request):
         }
     
     return render(request,'index.html',context=context)
+
+class AboutView(generic.DetailView):
+    template_name = "about.html"
