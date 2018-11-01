@@ -23,5 +23,6 @@ def index(request):
     
     return render(request,'index.html',context=context)
 
-class AboutView(generic.DetailView):
-    template_name = "about.html"
+class ProfileView(generic.DetailView):
+	model = appUser
+	template_name = "profile.html"
