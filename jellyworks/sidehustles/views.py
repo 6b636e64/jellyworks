@@ -23,9 +23,15 @@ def index(request):
     
     return render(request,'index.html',context=context)
 
-class ProfileView(generic.DetailView):
-	model = appUser
-	template_name = "profile.html"
+def profile(request):
+    """I don't really know what this is"""
+
+
+
+    context = {
+    }
+
+    return render(request, 'profile.html', context=context)
 
 class ProductView(generic.DetailView):
     model = publicProfile
@@ -34,4 +40,3 @@ class ProductView(generic.DetailView):
 class FilterSearchView(generic.DetailView):
     model = publicProfile
     template_name = "filtersearch.html"
-        
