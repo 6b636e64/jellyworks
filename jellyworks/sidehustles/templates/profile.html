@@ -1,4 +1,47 @@
 {% extends "base_generic.html" %}
 {% block content %}
-<p>if u can see this, u did good</p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-3">
+        <img class="product" src="data:image/jpeg;base64,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" alt="placeholder" style="width:200px;height:200px;">
+
+      <h2>Settings</h2>
+      <ul class="nav flex-column">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Email</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Change Password</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Update Profile Picture</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="#">Edit Personal Information</a>
+        </li>
+      </ul>
+    </div>
+    <div class="col-sm-4">
+      <form>
+        <div class="form-group">
+          <label for="Username">Username (NetID):</label>
+          <input type="name" class="form-control" id="UserName"  placeholder="Username">
+        </div>
+        <div class="form-group">
+          <label for="FirstName">First Name:</label>
+          <input type="name" class="form-control" id="FirstName" placeholder="First Name">
+        </div>
+        <div class="form-group">
+          <label for="LastName">Last Name:</label>
+          <input type="name" class="form-control" id="LastName" placeholder="Last Name">
+        </div>
+        <div class="form-group">
+          <label for="DisplayName">Display Name:</label>
+          <input type="name" class="form-control" id="DisplayName" placeholder="Display Name">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
 {% endblock %}
