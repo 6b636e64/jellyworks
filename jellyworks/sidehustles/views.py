@@ -19,10 +19,19 @@ def index(request):
         "num_publicprofiles": num_publicprofiles,
         "num_reviews": num_reviews,
         "num_services": num_services,
-        }
+    }
     
     return render(request,'index.html',context=context)
 
 class ProfileView(generic.DetailView):
 	model = appUser
 	template_name = "profile.html"
+
+class ProductView(generic.DetailView):
+    model = publicProfile
+    template_name = "product.html"
+
+class FilterSearchView(generic.DetailView):
+    model = publicProfile
+    template_name = "filtersearch.html"
+        
