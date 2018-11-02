@@ -26,17 +26,16 @@ def index(request):
 def profile(request):
     """I don't really know what this is"""
 
-
-
     context = {
+
     }
 
     return render(request, 'profile.html', context=context)
 
-class ProductView(generic.DetailView):
+class ProductView(generic.ListView):
     model = publicProfile
     template_name = "product.html"
 
-class FilterSearchView(generic.DetailView):
+class FilterSearchView(generic.ListView):
     model = publicProfile
     template_name = "filtersearch.html"
