@@ -1,11 +1,12 @@
 {% extends "base_generic.html" %}
-{% block content %}
+
 
 <head>
-    <link rel="shortcut icon" href="favicon3.ico" type="image/x-icon">
-    <link rel="stylesheet" type="text/css" href="sidehustles/static/css/mockCSS.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" type="text/css" href="static/css/mockCSS.css">
 </head>
 
+{% block content %}
     <!-- Search box -->
 
 <div class="jumbotron">
@@ -47,6 +48,7 @@
     </div>
   </div>
 {% endfor %}
+
 {% else %}
 <p>There's nothing here bitch</p>
 {% endif %}
