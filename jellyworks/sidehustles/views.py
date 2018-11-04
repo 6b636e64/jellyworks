@@ -41,6 +41,5 @@ class ProductView(generic.ListView):
     model = publicProfile
     template_name = "product.html"
 
-class FilterSearchView(generic.ListView):
-    model = publicProfile
-    template_name = "filtersearch.html"
+def filtersearch(request):
+    return render(request, 'filtersearch.html')
