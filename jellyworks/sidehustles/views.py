@@ -39,8 +39,20 @@ def about(request):
 
 
 def product(request):
+
+    seller_name = publicProfile.public_displayname
+    service_name = Services.service_name
+    service_reviews = Services.service_reviews
+    service_likes = Reviews.review_like_count
+    service_stars = Reviews.review_star_count
+    
     context = {
-        "list_o_services": Services.objects.all()
+        "list_o_services": Services.objects.all(),
+        "seller_name" : seller_name,
+        "service_name" : service_name,
+        "service_reviews" : service_reviews,
+        "service_likes" : service_likes,
+        "service_stars" : service_stars
     }
 
     return render(request, 'product.html')

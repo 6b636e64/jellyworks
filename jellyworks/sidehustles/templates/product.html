@@ -4,10 +4,9 @@
   <div class="col-sm-4">
     <img class="product" src="https://c1.staticflickr.com/9/8287/29517736620_3184b66ec8.jpg" alt="placeholder">
   </div>
-  
   <div class="col-sm-4 titles">
-    <h1 class="service">{{ Services.service_name }}</h1>
-    <h2 class="seller">{{ publicProfile.public_displayname }}</h2>
+    <h1 class="service">{{ service.service_name  }}</h1>
+    <h2 class="seller">{{ service.displayname  }}</h2>
     <button type="button" class="btn btn-outline-primary">Message</button>
   </div>
   
@@ -47,26 +46,15 @@
   <div class="col-sm-4 btm-row">
     <h3>Reviews</h3>
     <div class="customer-review">
-      <i class="fa fa-star 2x checked"></i>
-      <i class="fa fa-star 2x checked"></i>
-      <i class="fa fa-star 2x checked"></i>
-      <i class="fa fa-star 2x"></i>
-      <i class="fa fa-star 2x"></i>
-
-      <p>I like this product.</p>
+      <p>{{ service.service_stars }}
+      <i class="fa fa-star 2x checked"></i> {{ service.service_review }}</p>
     </div>
 
-    <i class="fa fa-star 2x"></i>
-    <i class="fa fa-star 2x"></i>
-    <i class="fa fa-star 2x"></i>
-    <i class="fa fa-star 2x"></i>
-    <i class="fa fa-star 2x"></i>
     <div class="form-group">
       <label for="comment">Review:</label>
       <textarea class="form-control" rows="3" id="comment"></textarea>
       <button type="button" class="btn btn-outline-primary review">Submit</button>
     </div>
   </div>
-
 </div>
 {% endblock %}
