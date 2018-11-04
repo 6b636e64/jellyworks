@@ -52,7 +52,7 @@ for i in range(1, 10):
 # Create Services
 services = []
 for i in range(1, 10):
-    service_name = fake.text(200)
+    service_name = fake.text(20)
     service_cost = int(fake.random_number())
     service_category = fake.text(200)
     service_location = fake.street_address()
