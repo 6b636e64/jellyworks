@@ -51,7 +51,7 @@ for i in range(1, 10):
   
 # Create Services
 services = []
-for i in range(1, 10):
+for i in range(1, 5):
     service_name = fake.text(20)
     service_cost = int(fake.random_number())
     service_category = fake.text(200)
