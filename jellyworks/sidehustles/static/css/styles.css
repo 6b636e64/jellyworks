@@ -1,1 +1,40 @@
+/* Product Page CSS */
+h1{
+    padding-top: 20px;
+}
 
+.titles{
+    margin-left: 45px;
+    margin-right: 0;
+}
+
+.btm-row{
+    margin-left: 25px;
+}
+
+img.product{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 300px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.btn{
+    background-color: blue;
+    color: #fff;
+    margin-top: 50px;
+    
+}
+.review{
+    margin-top: 5px;
+}
+.customer-review{
+    background-color: #EEE;
+    padding: 5px;
+}
+
+.checked{
+  color: #FFD700;
+}
