@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.views import generic
+from django.views.generic import TemplateView
 
 # Create your views here.
 
@@ -31,6 +32,10 @@ def profile(request):
     }
 
     return render(request, 'profile.html', context=context)
+
+def about(request):
+    return render(request, 'about.html')
+
 
 class ProductView(generic.ListView):
     model = publicProfile
