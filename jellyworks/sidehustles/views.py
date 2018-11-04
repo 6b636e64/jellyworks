@@ -20,6 +20,7 @@ def index(request):
         "num_publicprofiles": num_publicprofiles,
         "num_reviews": num_reviews,
         "num_services": num_services,
+        "list_o_services": Services.objects.all()
     }
     
     return render(request,'index.html',context=context)
@@ -37,9 +38,12 @@ def about(request):
     return render(request, 'about.html')
 
 
-class ProductView(generic.ListView):
-    model = publicProfile
-    template_name = "product.html"
+def product(request):
+    context = {
+        "list_o_services": Services.objects.all()
+    }
+
+    return render(request, 'product.html')
 
 def filtersearch(request):
     return render(request, 'filtersearch.html')
