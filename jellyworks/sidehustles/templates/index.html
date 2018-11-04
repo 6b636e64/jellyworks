@@ -38,9 +38,9 @@
       <img src="{% static "sidehustles/static/sidehustles/images/pic2.jpg" %}" alt="Mike" style="width:50%">
       <div class="container">
         <h2>My service: {{ service.service_name}} </h2>
-        <p class="title">Barber Extraordinaire</p>
-        <p>Check me out. You won't be disappointed. I also cut beards and (See profile) </p>
-        <p>@bestcuts</p>
+        <p class="title">Category: {{ service.service_category }}</p>
+        <p>Location: {{ service.service_location }}</p>
+        <p>Cost: ${{ service.service_cost }}</p>
         <p>Be the first like! &#128077;</p>
         <p><button class="button">Match</button></p>
       </div>
