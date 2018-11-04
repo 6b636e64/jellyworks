@@ -1,0 +1,32 @@
+.container-fluid {
+    margin: 5px;
+}
+
+#sh-logo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    max-width: 175px;
+    max-height: 175px;
+}
+
+footer {
+    margin-left: 15px;
+    margin-top: 5px;
+}
+
+h2 {
+    text-align: center;
+}
+
+#contact-details{
+    margin-left: -40px; 
+}
+
+#copyright{
+    font-size: 12px;
+    font-style: italic;
+    padding-top: 15px;
+    color: rgb(128, 119, 119);
+}
