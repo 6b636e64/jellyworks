@@ -14,10 +14,10 @@ class publicProfile(models.Model):
                   ("6", "Tutoring")]
     skill = models.CharField(max_length=9, choices=SKILL_TYPE, default='1')
     LOCATION_TYPE = [("1", "UMass Amherst"), ("2", "5-College"), ("3", "Off Campus")]
-    skill = models.CharField(max_length=9, choices=LOCATION_TYPE, default='1')
+    location = models.CharField(max_length=9, choices=LOCATION_TYPE, default='1')
     AVAILABILITY_TYPE = [("1", "M"), ("2", "T"), ("3", "W"), ("4", "Th"), ("5", "F"),
                   ("6", "Sat"), ("7", "Sun"), ("8", "Unavailable")]
-    skill = models.CharField(max_length=9, choices=AVAILABILITY_TYPE, default='8')
+    availability = models.CharField(max_length=9, choices=AVAILABILITY_TYPE, default='8')
 
     def __str__(self):
         """String for representing the Model object."""
