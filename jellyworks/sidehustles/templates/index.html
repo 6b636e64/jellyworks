@@ -31,12 +31,13 @@
   <div class="row centered-form center-block">
     <div class="container col-md-10 col-md-offset-1">
 
-
+{% if list_o_services %}
+{% for service in list_o_services %}
       <div class="column">
     <div class="card">
       <img src="{% static "sidehustles/static/sidehustles/images/pic2.jpg" %}" alt="Mike" style="width:50%">
       <div class="container">
-        <h2>Quinn's Cuts</h2>
+        <h2>My service: {{ service.service_name}} </h2>
         <p class="title">Barber Extraordinaire</p>
         <p>Check me out. You won't be disappointed. I also cut beards and (See profile) </p>
         <p>@bestcuts</p>
@@ -45,52 +46,10 @@
       </div>
     </div>
   </div>
-   
-
-      <div class="column">
-    <div class="card">
-      <img src="{% static "sidehustles/static/sidehustles/images/pic3.jpg" %}" alt="Mike" style="width:50%">
-      <div class="container">
-        <h2>Birchwood Moss</h2>
-        <p class="title">Plant Whisperer</p>
-        <p>I garden and stuff. I'm Chef Ramsey but in the gardening world. I can pretty much (See profile)</p>
-        <p>@greenest_thumb</p>
-        <p>231 students &#128077;this</p>
-        <p><button class="button">Match</button></p>
-      </div>
-    </div>
-  </div>
-
-
-  
-      <div class="column">
-    <div class="card">
-      <img src="{% static "sidehustles/static/sidehustles/images/pic4.jpg" %}" alt="Mike" style="width:50%">
-      <div class="container">
-        <h2>Nightly Code Inc.</h2>
-        <p class="title"> Python Wizards</p>
-        <p>We're two roomies who love to practice our skills by doing projects.</p>
-        <p>@dunder_heads</p>
-        <p>71 students &#128077;this</p>
-        <p><button class="button">Match</button></p>
-      </div>
-    </div>
-  </div>
-
-
-  <div class="column">
-    <div class="card">
-      <img src="{% static "sidehustles/static/sidehustles/images/pic1.jpg" %}" alt="John" style="width:50%">
-      <div class="container">
-        <h2>Tina Wool</h2>
-        <p class="title">Crafter of Woolen Wearables</p>
-        <p>My grandma taught me. And I need money for books. Match me!</p>
-        <p>@tinawool</p>
-        <p>5 students &#128077;this</p>
-        <p><button class="button">Match</button></p>
-      </div>
-    </div>
-  </div>
+{% endfor %}
+{% else %}
+<p>There's nothing here bitch</p>
+{% endif %}
 
 
     </div>
