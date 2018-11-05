@@ -58,4 +58,9 @@ def product(request):
     return render(request, 'product.html')
 
 def filtersearch(request):
-    return render(request, 'filtersearch.html')
+    user_list = publicProfile.objects.all()
+
+    context = {
+        'users': user_list
+    }
+    return render(request, 'filtersearch.html', context=context)
