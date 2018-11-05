@@ -10,7 +10,6 @@ class publicProfile(models.Model):
     public_lname = models.CharField(max_length=50, help_text="Last name", default="Smalls")
     public_displayname = models.CharField(max_length=30, help_text="Display name", default="Tupac")
     public_email = models.CharField(max_length=50, help_text="Email", default="Tupac@gmail.com")
-    public_email = models.CharField(max_length=50, help_text="Email", default="Tupac@gmail.com")
     skill_info = models.CharField(max_length=1000, help_text="Tell us more about your skill!", default="I am very skilled!")
     SKILL_TYPE = [("Computers", "Computers"), ("Music", "Music"), ("Art", "Art"), ("Sports", "Sports"), ("Manual Labor", "Manual Labor"),
                   ("Tutoring", "Tutoring")]
