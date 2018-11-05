@@ -90,40 +90,23 @@
 
 
 	</aside> <!-- col.// -->
+
+	 <!users>
 	<aside class="col-sm-4">
 
+		{% for user in users%}
   <div class="card">
-  <h5 class="card-header"> Bill Somebody</h5>
+  <h5 class="card-header"> {{user.public_displayname}}</h5>
   <div class="card-body">
-    <h5 class="card-title">Skill</h5>
-    <p class="card-text">More info regarding skill</p>
+    <h5 class="card-title">{{user.skill}}</h5>
+    <p class="card-text">{{user.skill_info}}</p>
     <a href="#" class="btn btn-primary">Profile</a>
   </div>
 </div>
-          <div class="card">
-  <h5 class="card-header">Jen Skillmaster</h5>
-  <div class="card-body">
-    <h5 class="card-title">Programmer</h5>
-    <p class="card-text">Can code in C++ and Python!</p>
-    <a href="#" class="btn btn-primary">Profile</a>
-  </div>
-</div>
-          <div class="card">
-  <h5 class="card-header">Gordon Ramsay</h5>
-  <div class="card-body">
-    <h5 class="card-title">Cook extraordinaire</h5>
-    <p class="card-text">Hello, my name's NINOOOO.</p>
-    <a href="#" class="btn btn-primary">Profile</a>
-  </div>
-</div>
+		{% endfor %}
+
 	</aside>
 </div>
-
-<div class="row">
-
-
-
-
 </div>
 
 
