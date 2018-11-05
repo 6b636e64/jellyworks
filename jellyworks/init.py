@@ -17,8 +17,15 @@ for i in range(1, 10):
     public_lname = fake.last_name()
     public_displayname = fake.name()
     public_email = fake.ascii_free_email()
+    skill_info = fake.job()
+    x = randint(0, len(publicProfile.SKILL_TYPE)-1)
+    skill = publicProfile.SKILL_TYPE[x][0]
+    x = randint(0, len(publicProfile.LOCATION_TYPE)-1)
+    location = publicProfile.LOCATION_TYPE[x][0]
+    x = randint(0, len(publicProfile.AVAILABILITY_TYPE)-1)
+    availability = publicProfile.AVAILABILITY_TYPE[x][0]
     profile = publicProfile(
-        public_fname = public_fname, public_lname = public_lname, public_displayname = public_displayname,  public_email =  public_email
+        public_fname = public_fname, public_lname = public_lname, public_displayname = public_displayname,  public_email =  public_email, skill_info = skill_info, skill = skill, location = location, availability = availability
     )
     profile.save()
     publicProfiles.append(profile)
