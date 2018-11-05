@@ -1,4 +1,5 @@
 import textwrap
+from random import *
 from datetime import timedelta
 
 # Create a super user to use the admin site.
