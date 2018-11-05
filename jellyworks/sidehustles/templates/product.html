@@ -4,10 +4,13 @@
   <div class="col-sm-4">
     <img class="product" src="https://c1.staticflickr.com/9/8287/29517736620_3184b66ec8.jpg" alt="placeholder">
   </div>
-  
+  {% load static %}
+
+  {% if list_o %}
+  {% for service in list_o %}
   <div class="col-sm-4 titles">
     <h1 class="service">{{ service.service_name  }}</h1>
-    <h2 class="seller">{{ service.displayname  }}</h2>
+    <h2 class="seller">{{ service.seller_name  }}</h2>
     <button type="button" class="btn btn-outline-primary">Message</button>
   </div>
 </div>
@@ -19,24 +22,24 @@
     <div class="card">
       <div class="card-header">
         <a class="card-link" data-toggle="collapse" href="#collapseOne">
-          Question #1
+          How much does {{ service.service_name }} cost?
         </a>
       </div>
       <div id="collapseOne" class="collapse show" data-parent="#accordion">
         <div class="card-body">
-          text goes here
+          {{ service.service_cost }}
         </div>
       </div>
     </div>
     <div class="card">
       <div class="card-header">
         <a class="collapsed card-link" data-toggle="collapse" href="#collapseTwo">
-        Question #2
+        On a scale from 1-10 (1 being very little to 10 being pro), how much experience does {{ service.seller_name }} have?
       </a>
       </div>
       <div id="collapseTwo" class="collapse" data-parent="#accordion">
         <div class="card-body">
-          text goes here
+         {{  service.service_proficiency }}
         </div>
       </div>
     </div>
@@ -47,7 +50,7 @@
     <h3>Reviews</h3>
     <div class="customer-review">
       <p>{{ service.service_stars }}
-      <i class="fa fa-star 2x checked"></i> {{ service.service_review }}</p>
+      <i class="fa fa-star 2x"></i> {{ service.service_review }}</p>
     </div>
 
     <div class="form-group">
@@ -56,5 +59,9 @@
       <button type="button" class="btn btn-outline-primary review">Submit</button>
     </div>
   </div>
+  {% endfor %}
+  {% else %}
+  <p>error 404</p>
+  {% endif %}
 </div>
 {% endblock %}

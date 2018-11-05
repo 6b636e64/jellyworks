@@ -47,7 +47,8 @@ def product(request):
     service_stars = Reviews.review_star_count
     
     context = {
-        "list_o_services": Services.objects.all(),
+        "list_o": Services.objects.all(),
+        "list_o_reviews": Reviews.objects.all(),
         "seller_name" : seller_name,
         "service_name" : service_name,
         "service_reviews" : service_reviews,
@@ -55,7 +56,7 @@ def product(request):
         "service_stars" : service_stars
     }
 
-    return render(request, 'product.html')
+    return render(request, 'product.html', context=context)
 
 def filtersearch(request):
     user_list = publicProfile.objects.all()
