@@ -34,27 +34,14 @@
 		</header>
 		<div class="filter-content">
 			<div class="card-body">
-			<form>
+				{% for type in skilltypes%}
 				<label class="form-check">
-				  <input class="form-check-input" type="checkbox" value="">
-				  <span class="form-check-label">
-				    Computers
-				  </span>
-				</label> <!-- form-check.// -->
-				<label class="form-check">
-				  <input class="form-check-input" type="checkbox" value="">
-				  <span class="form-check-label">
-				    Crafts
-				  </span>
-				</label>  <!-- form-check.// -->
-				<label class="form-check">
-				  <input class="form-check-input" type="checkbox" value="">
-				  <span class="form-check-label">
-				    Music
-				  </span>
-				</label>  <!-- form-check.// -->
-			</form>
-
+			  	<input class="form-check-input" type="radio" name="exampleRadio" value="">
+			  	<span class="form-check-label">
+			    	{{type}}
+			  	</span>
+				</label>
+				{% endfor%}
 			</div> <!-- card-body.// -->
 		</div>
 	</article> <!-- card-group-item.// -->
@@ -65,24 +52,35 @@
 		</header>
 		<div class="filter-content">
 			<div class="card-body">
-			<label class="form-check">
-			  <input class="form-check-input" type="radio" name="exampleRadio" value="">
-			  <span class="form-check-label">
-			    UMass Amherst Campus
-			  </span>
-			</label>
-			<label class="form-check">
-			  <input class="form-check-input" type="radio" name="exampleRadio" value="">
-			  <span class="form-check-label">
-			    5-College Campus
-			  </span>
-			</label>
-			<label class="form-check">
-			  <input class="form-check-input" type="radio" name="exampleRadio" value="">
-			  <span class="form-check-label">
-			    Off Campus
-			  </span>
-			</label>
+				{% for location in location_types%}
+				<label class="form-check">
+			  	<input class="form-check-input" type="radio" name="exampleRadio" value="">
+			  	<span class="form-check-label">
+			    	{{location}}
+			  	</span>
+				</label>
+				{% endfor%}
+			</div> <!-- card-body.// -->
+		</div>
+	</article> <!-- card-group-item.// -->
+
+	<article class="card-group-item">
+		<header class="card-header">
+			<h6 class="title">Availability </h6>
+		</header>
+		<div class="filter-content">
+			<div class="card-body">
+			<form>
+				{% for date in availability_types%}
+				<label class="form-check">
+				  <input class="form-check-input" type="checkbox" value="">
+				  <span class="form-check-label">
+				    {{date}}
+				  </span>
+				</label> <!-- form-check.// -->
+				{% endfor %}
+			</form>
+
 			</div> <!-- card-body.// -->
 		</div>
 	</article> <!-- card-group-item.// -->
