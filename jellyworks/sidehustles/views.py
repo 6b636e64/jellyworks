@@ -59,8 +59,19 @@ def product(request):
 
 def filtersearch(request):
     user_list = publicProfile.objects.all()
-
+    skill_types = []
+    locations = []
+    days = []
+    for st in publicProfile.SKILL_TYPE:
+        skill_types.append(st[0])
+    for st in publicProfile.LOCATION_TYPE:
+        locations.append(st[0])
+    for st in publicProfile.AVAILABILITY_TYPE:
+        days.append(st[0])
     context = {
-        'users': user_list
+        'users': user_list,
+        'skilltypes': skill_types,
+        'location_types': locations,
+        'availability_types': days
     }
     return render(request, 'filtersearch.html', context=context)
