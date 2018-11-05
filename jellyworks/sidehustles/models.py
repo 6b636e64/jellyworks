@@ -10,13 +10,15 @@ class publicProfile(models.Model):
     public_lname = models.CharField(max_length=50, help_text="Last name", default="Smalls")
     public_displayname = models.CharField(max_length=30, help_text="Display name", default="Tupac")
     public_email = models.CharField(max_length=50, help_text="Email", default="Tupac@gmail.com")
-    SKILL_TYPE = [("1", "Computers"), ("2", "Music"), ("3", "Art"), ("4", "Sports"), ("5", "Manual Labor"),
-                  ("6", "Tutoring")]
-    skill = models.CharField(max_length=9, choices=SKILL_TYPE, default='1')
-    LOCATION_TYPE = [("1", "UMass Amherst"), ("2", "5-College"), ("3", "Off Campus")]
-    location = models.CharField(max_length=9, choices=LOCATION_TYPE, default='1')
-    AVAILABILITY_TYPE = [("1", "M"), ("2", "T"), ("3", "W"), ("4", "Th"), ("5", "F"),
-                  ("6", "Sat"), ("7", "Sun"), ("8", "Unavailable")]
+    public_email = models.CharField(max_length=50, help_text="Email", default="Tupac@gmail.com")
+    skill_info = models.CharField(max_length=1000, help_text="Tell us more about your skill!", default="I am very skilled!")
+    SKILL_TYPE = [("Computers", "Computers"), ("Music", "Music"), ("Art", "Art"), ("Sports", "Sports"), ("Manual Labor", "Manual Labor"),
+                  ("Tutoring", "Tutoring")]
+    skill = models.CharField(max_length=50, choices=SKILL_TYPE, default='Computers')
+    LOCATION_TYPE = [("UMass Amherst", "UMass Amherst"), ("5-College", "5-College"), ("Off Campus", "Off Campus")]
+    location = models.CharField(max_length=50, choices=LOCATION_TYPE, default='1')
+    AVAILABILITY_TYPE = [("M", "M"), ("T", "T"), ("W", "W"), ("Th", "Th"), ("F", "F"),
+                  ("Sat", "Sat"), ("Sun", "Sun"), ("Unavailable", "Unavailable")]
     availability = models.CharField(max_length=9, choices=AVAILABILITY_TYPE, default='8')
 
     def __str__(self):
