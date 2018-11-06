@@ -1,6 +1,6 @@
 from django.contrib import admin
 from sidehustles.models import publicProfile, appUser, Reviews, Services
-#also for Edwood <3
+
 admin.site.register(publicProfile)
 admin.site.register(appUser)
 admin.site.register(Reviews)
