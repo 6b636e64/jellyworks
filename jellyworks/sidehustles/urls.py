@@ -8,7 +8,7 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('profile/', views.profile, name="profile"),
     path('filtersearch/', views.filtersearch, name="filtersearch"),
-    path('product/', views.product, name="product"),
+    path('product/<int:pk>', views.product, name="product"),
     path('about/', views.about, name="about")
 
 ]
