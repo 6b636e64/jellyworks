@@ -43,7 +43,7 @@
         <p class="title">Category: {{ service.service_category }}</p>
         <p>Location: {{ service.service_location }}</p>
         <p>Cost: ${{ service.service_cost }}</p>
-        <p>Be the first like! &#128077;</p>
+        <p>{{ service.service_cost }} likes &#128077;</p>
         <p><a class="btn btn-dark" href="{{ service.get_absolute_url }}" role = "button">Match</a></p>
       </div>
     </div>
