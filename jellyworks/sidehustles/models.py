@@ -44,8 +44,8 @@ class Services(models.Model):
     """Model representing a service offered on Sidehustles."""
 
     # A character field for the service name.
-    service_name = models.CharField(max_length=200, default = "Tupac's 3-Pack Sodas") 
-public_displayname = models.CharField(max_length=30, help_text="Display name", default="Tupac")
+    service_name = models.CharField(max_length=200, default = "Tupac's 3-Pack Sodas")
+    public_displayname = models.CharField(max_length=30, help_text="Display name", default="Tupac")
     # A integer field for the service cost.
     service_cost = models.IntegerField()
     
