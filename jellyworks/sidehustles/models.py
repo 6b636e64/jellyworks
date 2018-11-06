@@ -82,9 +82,9 @@ class Services(models.Model):
         return reverse("product", args=[str(self.id)])
 =======
    def __str__(self):
-        """String for representing the Model object."""
-        return self.service_name
-        
+    """String for representing the Model object."""
+    return self.service_name
+
     def get_absolute_url(self):
         return reverse("product", args=[str(self.id)])
 >>>>>>> cd27d7a9d734435fa28d26284f1499a8020a5f03
