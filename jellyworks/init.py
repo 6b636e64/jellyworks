@@ -18,15 +18,9 @@ for i in range(1, 10):
     public_lname = fake.last_name()
     public_displayname = fake.name()
     public_email = fake.ascii_free_email()
-    skill_info = fake.job()
-    x = randint(0, len(publicProfile.SKILL_TYPE)-1)
-    skill = publicProfile.SKILL_TYPE[x][0]
-    x = randint(0, len(publicProfile.LOCATION_TYPE)-1)
-    location = publicProfile.LOCATION_TYPE[x][0]
-    x = randint(0, len(publicProfile.AVAILABILITY_TYPE)-1)
-    availability = publicProfile.AVAILABILITY_TYPE[x][0]
+    
     profile = publicProfile(
-        public_fname = public_fname, public_lname = public_lname, public_displayname = public_displayname,  public_email =  public_email, skill_info = skill_info, skill = skill, location = location, availability = availability
+        public_fname = public_fname, public_lname = public_lname, public_displayname = public_displayname,  public_email =  public_email 
     )
     profile.save()
     publicProfiles.append(profile)
@@ -66,7 +60,14 @@ for i in range(1, 5):
     service_location = fake.street_address()
     service_proficiency = int(fake.random_number())
     service_reviews = fake.text(500)
-    service = Services(service_name = service_name, service_cost = service_cost, service_category = service_category, service_location = service_location, service_proficiency = service_proficiency, service_reviews = service_reviews)
+    skill_info = fake.job()
+    x = randint(0, len(Services.SKILL_TYPE)-1)
+    skill = Services.SKILL_TYPE[x][0]
+    x = randint(0, len(Services.LOCATION_TYPE)-1)
+    location = Services.LOCATION_TYPE[x][0]
+    x = randint(0, len(Services.AVAILABILITY_TYPE)-1)
+    availability = Services.AVAILABILITY_TYPE[x][0]
+    service = Services(service_name = service_name, service_cost = service_cost, service_category = service_category, service_location = service_location, service_proficiency = service_proficiency, service_reviews = service_reviews,skill_info = skill_info, skill = skill, location = location, availability = availability)
     service.save()
     services.append(service)
 
