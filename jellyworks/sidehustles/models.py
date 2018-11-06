@@ -73,8 +73,8 @@ class Services(models.Model):
 
    # id = models.UUIDField(primary_key = True, default=uuid.uuid4, unique=True)
    def __str__(self):
-        """String for representing the Model object."""
-        return self.service_name
-        
+    """String for representing the Model object."""
+    return self.service_name
+
     def get_absolute_url(self):
         return reverse("product", args=[str(self.id)])
