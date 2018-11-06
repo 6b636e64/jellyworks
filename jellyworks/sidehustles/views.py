@@ -38,7 +38,7 @@ def about(request):
     return render(request, 'about.html')
 
 
-def product(request):
+def product(request, pk):
 
     seller_name = publicProfile.public_displayname
     service_name = Services.service_name

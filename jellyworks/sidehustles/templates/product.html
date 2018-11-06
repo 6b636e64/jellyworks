@@ -6,8 +6,7 @@
   </div>
   {% load static %}
 
-  {% if list_o %}
-  {% for service in list_o %}
+  
   <div class="col-sm-4 titles">
     <h1 class="product">{{ service.service_name  }}</h1>
     <h2>{{ service.seller_name  }}</h2>
@@ -59,9 +58,6 @@
       <button type="button" class="btn-product btn-outline-primary review">Submit</button>
     </div>
   </div>
-  {% endfor %}
-  {% else %}
-  <p>error 404</p>
-  {% endif %}
+  
 </div>
 {% endblock %}
