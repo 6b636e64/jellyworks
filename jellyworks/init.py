@@ -1,7 +1,7 @@
 import textwrap
 from random import *
 from datetime import timedelta
-# For Edwood
+
 # Create a super user to use the admin site.
 from django.contrib.auth.models import User
 from faker import Faker
