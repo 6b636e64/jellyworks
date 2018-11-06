@@ -1,0 +1,55 @@
+{% extends "base_generic.html" %}
+{% block content %}
+
+<head>
+    <link rel="shortcut icon" href="favicon3.ico" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="sidehustles/static/css/mockCSS.css">
+</head>
+
+    <!-- Search box -->
+
+<div class="jumbotron">
+  <div class="container">
+    <h1><center> Side Hustles: buy, sell, & exchange &#x2728; </center></h1>
+  </div>
+
+
+<div class="search container">
+    <div class="d-flex">
+        <input class="form-control mr-1" type="search" placeholder="I'm looking for..." aria-label="Search">
+        <button class="btn btn-primary">&#x1F50E;</button>
+    </div>
+    
+<center><p>&#128071;Need some inspo? Check out these Side Hustlers!&#128071;</p></center>
+</div>
+
+</div>
+
+{% load static %}
+
+<div class="biocontainer">
+  <div class="row centered-form center-block">
+    <div class="container col-md-10 col-md-offset-1">
+
+{% if list_o_services %}
+{% for service in list_o_services %}
+      <div class="column">
+    <div class="card">
+      <img src="{% static "sidehustles/static/sidehustles/images/pic2.jpg" %}" alt="Mike" style="width:50%">
+      <div class="container">
+        <h2>My service: {{ service.service_name}} </h2>
+        <p class="title">Barber Extraordinaire</p>
+        <p>Check me out. You won't be disappointed. I also cut beards and (See profile) </p>
+        <p>@bestcuts</p>
+        <p>Be the first like! &#128077;</p>
+        <p><button class="button">Match</button></p>
+      </div>
+    </div>
+  </div>
+{% endfor %}
+
+
+    </div>
+  </div>
+</div>
+{% endblock %}
