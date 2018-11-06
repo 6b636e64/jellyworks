@@ -70,11 +70,8 @@ class Services(models.Model):
     AVAILABILITY_TYPE = [("M", "M"), ("T", "T"), ("W", "W"), ("Th", "Th"), ("F", "F"),
                   ("Sat", "Sat"), ("Sun", "Sun"), ("Unavailable", "Unavailable")]
     availability = models.CharField(max_length=9, choices=AVAILABILITY_TYPE, default='8')
-
-   # id = models.UUIDField(primary_key = True, default=uuid.uuid4, unique=True)
-   def __str__(self):
-    """String for representing the Model object."""
-    return self.service_name
+    def __str__(self):
+        return self.service_name
 
     def get_absolute_url(self):
         return reverse("product", args=[str(self.id)])
