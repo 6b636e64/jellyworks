@@ -45,7 +45,7 @@ class Services(models.Model):
 
     # A character field for the service name.
     service_name = models.CharField(max_length=200, default = "Tupac's 3-Pack Sodas")
-		
+    public_displayname = models.CharField(max_length=30, help_text="Display name", default="Tupac")
     # A integer field for the service cost.
     service_cost = models.IntegerField()
     
@@ -72,6 +72,7 @@ class Services(models.Model):
     availability = models.CharField(max_length=9, choices=AVAILABILITY_TYPE, default='8')
 
    # id = models.UUIDField(primary_key = True, default=uuid.uuid4, unique=True)
+<<<<<<< HEAD
 
     
     def __str__(self):
@@ -79,3 +80,11 @@ class Services(models.Model):
         return self.service_name
     def get_absolute_url(self):
         return reverse("product", args=[str(self.id)])
+=======
+   def __str__(self):
+        """String for representing the Model object."""
+        return self.service_name
+        
+    def get_absolute_url(self):
+        return reverse("product", args=[str(self.id)])
+>>>>>>> cd27d7a9d734435fa28d26284f1499a8020a5f03

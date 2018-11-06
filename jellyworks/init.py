@@ -55,6 +55,7 @@ for i in range(1, 10):
 services = []
 for i in range(1, 5):
     service_name = fake.text(20)
+    public_displayname = fake.name()
     service_cost = int(fake.random_number())
     service_category = fake.text(200)
     service_location = fake.street_address()
@@ -67,7 +68,7 @@ for i in range(1, 5):
     location = Services.LOCATION_TYPE[x][0]
     x = randint(0, len(Services.AVAILABILITY_TYPE)-1)
     availability = Services.AVAILABILITY_TYPE[x][0]
-    service = Services(service_name = service_name, service_cost = service_cost, service_category = service_category, service_location = service_location, service_proficiency = service_proficiency, service_reviews = service_reviews,skill_info = skill_info, skill = skill, location = location, availability = availability)
+    service = Services(public_displayname = public_displayname, service_name = service_name, service_cost = service_cost, service_category = service_category, service_location = service_location, service_proficiency = service_proficiency, service_reviews = service_reviews,skill_info = skill_info, skill = skill, location = location, availability = availability)
     service.save()
     services.append(service)
 
