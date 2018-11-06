@@ -1,5 +1,5 @@
 /* Product Page CSS */
-h1{
+h1.product{
     padding-top: 20px;
 }
 
@@ -21,7 +21,7 @@ img.product{
     margin-bottom: 20px;
 }
 
-.btn{
+.btn-product{
     background-color: blue;
     color: #fff;
     margin-top: 50px;

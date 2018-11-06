@@ -9,9 +9,9 @@
   {% if list_o %}
   {% for service in list_o %}
   <div class="col-sm-4 titles">
-    <h1 class="service">{{ service.service_name  }}</h1>
-    <h2 class="seller">{{ service.seller_name  }}</h2>
-    <button type="button" class="btn btn-outline-primary">Message</button>
+    <h1 class="product">{{ service.service_name  }}</h1>
+    <h2>{{ service.seller_name  }}</h2>
+    <button type="button" class="btn-product btn-outline-primary">Message</button>
   </div>
 </div>
 
@@ -56,7 +56,7 @@
     <div class="form-group">
       <label for="comment">Review:</label>
       <textarea class="form-control" rows="3" id="comment"></textarea>
-      <button type="button" class="btn btn-outline-primary review">Submit</button>
+      <button type="button" class="btn-product btn-outline-primary review">Submit</button>
     </div>
   </div>
   {% endfor %}
