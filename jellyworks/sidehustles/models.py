@@ -73,9 +73,9 @@ public_displayname = models.CharField(max_length=30, help_text="Display name", d
     availability = models.CharField(max_length=9, choices=AVAILABILITY_TYPE, default='8')
 
    # id = models.UUIDField(primary_key = True, default=uuid.uuid4, unique=True)
-
-    def get_absolute_url(self):
-        return reverse("product", args=[str(self.id)])
-    def __str__(self):
+   def __str__(self):
         """String for representing the Model object."""
         return self.service_name
+        
+    def get_absolute_url(self):
+        return reverse("product", args=[str(self.id)])
