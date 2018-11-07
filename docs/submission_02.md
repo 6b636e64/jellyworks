@@ -6,7 +6,8 @@ Our app aims to match “buyers” to “sellers”. Each seller will have the o
 Sarah Manlove, Edwood Brice, Chinh Do, Suzy Balles, and Jeff Reardon
 
 ## Video Link
-[3-5 minute video that provides an overview of your data model and how your data model connects to the code that you have implemented for that data model in your Django project. You should also show your application running.]  
+[Youtube Link](https://www.youtube.com/watch?v=BVxx9Cvtpdw&feature=youtu.be)
+[Google Drive Link](https://drive.google.com/open?id=1mMzc1clLYyt7D036DokQpcGPn7ApvQqM)
 
 ## Design Overview
 Our application’s data model is implemented in four salient components: publicProfile, appUser, Reviews, and Services.  We have attached a document visualizing it in Github ([Sidehustles Data Model](https://github.com/suzyballes/jellyworks/blob/master/docs/Data%20Model.pdf)). The URL routes of our app primarily manifest in the navbar with Home, Browse, About Us, and My Profile. Clicking on services on the Home page or on the Browse page will direct users to a specific service page. Each of the pages in the navbar and the linked user pages on the home page and the browse page make up our implemented UI views. Each page is explained below:
