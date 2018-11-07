@@ -1,3 +1,5 @@
+### Edwood Brice - Individual Writeup 
+
 I helped to define the application in terms of its functionality and the data model it is based upon. From there, I helped to define models.py in a manner that made sense for what our application is trying to achieve. Specifically, I was focused on ensuring that everyone’s contributions logically linked together. Subsequently, whenever something was added to the application, I checked the data model and worked with my peers to resolve discrepancies. And when we encountered issues along the way, the data model was edited to accommodate our changing directions. 
 
 Furthermore, I collaborated with my peers on the template files, init.py, urls.py and views.py simultaneously. We were able to achieve this with codeshare.io, a platform that enables users to edit code in real-time. As a result, as a contributor, I focused on making sure that our contributions did not negatively conflict. Specifically, this manifested in urging everyone to stick to a specific naming scheme. This happened after we realized that producing unique and disparate names for each variable was counterproductive in the long run. 
