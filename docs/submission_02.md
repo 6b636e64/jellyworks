@@ -7,6 +7,7 @@ Sarah Manlove, Edwood Brice, Chinh Do, Suzy Balles, and Jeff Reardon
 
 ## Video Link
 [Youtube Link](https://www.youtube.com/watch?v=BVxx9Cvtpdw&feature=youtu.be)
+
 [Google Drive Link](https://drive.google.com/open?id=1mMzc1clLYyt7D036DokQpcGPn7ApvQqM)
 
 ## Design Overview
