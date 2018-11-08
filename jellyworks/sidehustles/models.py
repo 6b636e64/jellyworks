@@ -27,18 +27,6 @@ class appUser(models.Model):
     def __str__(self):
         """String for representing the Model object."""
         return self.user_unique_email
-
-class Reviews(models.Model):
-    """Model representing a customer review."""
-		
-    review_like_count = models.IntegerField()
-    review_star_count = models.IntegerField()
-    review_text = models.TextField(help_text = "Type a review", default="Macklemore is amazeballs")
-    review_date_posted = models.DateField(default="1/1/18")
-    
-    def __str__(self):
-        """String for representing the Model object."""
-        return self.review_text
     
 class Services(models.Model):
     """Model representing a service offered on Sidehustles."""
@@ -77,3 +65,15 @@ class Services(models.Model):
         
     def get_absolute_url(self):
         return reverse("product", args=[str(self.id)])
+
+class Reviews(models.Model):
+    """Model representing a customer review."""
+    service = models.ForeignKey(Services, on_delete=models.CASCADE, null=True)
+    review_like_count = models.IntegerField()
+    review_star_count = models.IntegerField()
+    review_text = models.TextField(help_text = "Type a review", default="Macklemore is amazeballs")
+    review_date_posted = models.DateField(default="1/1/18")
+    
+    def __str__(self):
+        """String for representing the Model object."""
+        return self.review_text

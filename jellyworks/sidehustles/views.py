@@ -56,7 +56,7 @@ def product(request, pk):
         "service_stars" : service_stars
     }
 
-    return render(request, 'product.html', {'service': Services.objects.get(id=pk)})
+    return render(request, 'product.html', {'service': Services.objects.get(id=pk), 'review': Reviews.objects.get(id=pk)})
 
 
 def filtersearch(request):
