@@ -77,3 +77,5 @@ def filtersearch(request):
         'availability_types': days
     }
     return render(request, 'filtersearch.html', context=context)
+
+

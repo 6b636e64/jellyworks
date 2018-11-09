@@ -5,3 +5,8 @@
     margin-right: auto;
     margin-left: auto;
 }
+
+.btn btn-outline-primary { 
+    display:inline-block; 
+    float: right;
+}
