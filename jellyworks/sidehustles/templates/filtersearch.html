@@ -96,10 +96,10 @@
 
 				{% for user in users%}
 				<div class="card">
-					<h5 class="card-header"> {{user.public_displayname}}</h5>
+					<h5 class="card-header"> {{user.skill_info}}</h5>
 					<div class="card-body">
-						<h5 class="card-title">{{user.skill}}</h5>
-						<p class="card-text">{{user.skill_info}}</p>
+						<h5 class="card-title">{{user.public_displayname}}</h5>
+						<p class="card-text">{{user.skill}}</p>
 						<a href="#" class="btn btn-primary">Profile</a>
 					</div>
 				</div>
