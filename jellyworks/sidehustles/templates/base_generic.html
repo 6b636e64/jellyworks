@@ -48,10 +48,25 @@
           </div> 
 
           <div class="collapse navbar-collapse" id="navbarSupportedContent2"> 
-            <ul class="navbar-nav ml-auto"> 
+            <ul class="navbar-nav ml-auto">
+              {% if user.is_authenticated %}       
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  {{ user.get_username }}
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="{% url 'profile' %}">My Profile</a>
+                  <a class="dropdown-item" href="{% url 'logout'%}?next={{request.path}}">Logout</a>
+                </div>
+              </li>
+              {% else %}
+              <span class="navbar-text">
+                  You are not logged in &nbsp;
+                </span>
               <li>
                 <a class="btn btn-outline-primary" href="{% url 'login'%}?next={{request.path}}" role="button" id="login-button">Login</a>
               </li>
+              {% endif %}
             </ul>
           </div>
         </nav>
