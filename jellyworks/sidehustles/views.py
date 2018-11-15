@@ -30,7 +30,6 @@ def index(request):
     return render(request,'index.html',context=context)
 
 def profile(request):
-    """I don't really know what this is"""
     if request.user.is_authenticated:
         return render(request, 'profile.html')
     else: 
