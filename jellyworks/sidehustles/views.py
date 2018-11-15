@@ -1,6 +1,10 @@
 from django.shortcuts import render
 from django.views import generic
 from django.views.generic import TemplateView
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import redirect
+
+from jellyworks.settings import LOGOUT_REDIRECT_URL
 
 # Create your views here.
 
@@ -27,12 +31,10 @@ def index(request):
 
 def profile(request):
     """I don't really know what this is"""
-
-    context = {
-
-    }
-
-    return render(request, 'profile.html', context=context)
+    if request.user.is_authenticated:
+        return render(request, 'profile.html')
+    else: 
+        return redirect('index') 
 
 def about(request):
     return render(request, 'about.html')
