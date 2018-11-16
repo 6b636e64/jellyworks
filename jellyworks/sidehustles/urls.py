@@ -11,5 +11,6 @@ urlpatterns = [
     path('product/<int:pk>', views.product, name="product"),
     path('about/', views.about, name="about"),
     #path('password_reset_confirm/', views.password_reset_confirm, name="password_reset_confirm"),
+    #path('profile/<int:pk>/profile_changes', views.profileChanges, name='profile_changes'),
 
 ]

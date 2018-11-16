@@ -10,11 +10,19 @@ class publicProfile(models.Model):
     public_lname = models.CharField(max_length=50, help_text="Last name", default="Smalls")
     public_displayname = models.CharField(max_length=30, help_text="Display name", default="Tupac")
     public_email = models.CharField(max_length=50, help_text="Email", default="Tupac@gmail.com")
-    
-
     def __str__(self):
         """String for representing the Model object."""
         return self.public_displayname
+
+class UserInstance(models.Model):
+    """Model representing a specific user."""
+
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, help_text='Unique ID for this particular user')
+    user = models.ForeignKey('publicProfile', on_delete=models.SET_NULL, null=True)
+
+    def __str__(self):
+        return f"{self.id} {self.public_fname}"
+
 
 class appUser(models.Model):
     """Model representing a private student (user account)"""
@@ -23,11 +31,11 @@ class appUser(models.Model):
     user_lname = models.CharField(max_length=50, help_text="Last name", default="Lamar")
     user_unique_email = models.CharField(max_length=100, default="Tupac@gmail.com")
     user_password = models.CharField(max_length=50, default="abc123")
-    
+
     def __str__(self):
         """String for representing the Model object."""
         return self.user_unique_email
-    
+
 class Services(models.Model):
     """Model representing a service offered on Sidehustles."""
 
@@ -36,19 +44,19 @@ class Services(models.Model):
     public_displayname = models.CharField(max_length=30, help_text="Display name", default="Tupac")
     # A integer field for the service cost.
     service_cost = models.IntegerField()
-    
+
     # A character field for the service category.
     service_category = models.CharField(max_length=200, default = "J Cole")
-    
+
     # A character field to indicate the service's location.
     service_location = models.CharField(max_length=200, default = "Grandmaster Flash")
-    
+
     # A integer field to indicate proficieny (scale to be determined)
     service_proficiency = models.IntegerField()
-    
+
     # A character field for a review.
     service_reviews = models.TextField(help_text = "Type a review.")
-    
+
     skill_info = models.CharField(max_length=1000, help_text="Tell us more about your skill!", default="I am very skilled!")
     SKILL_TYPE = [("Computers", "Computers"), ("Music", "Music"), ("Art", "Art"), ("Sports", "Sports"), ("Manual Labor", "Manual Labor"),
                   ("Tutoring", "Tutoring")]
@@ -62,7 +70,7 @@ class Services(models.Model):
     def __str__(self):
         """String for representing the Model object."""
         return self.service_name
-        
+
     def get_absolute_url(self):
         return reverse("product", args=[str(self.id)])
 
@@ -73,7 +81,7 @@ class Reviews(models.Model):
     review_star_count = models.IntegerField()
     review_text = models.TextField(help_text = "Type a review", default="Macklemore is amazeballs")
     review_date_posted = models.DateField(default="1/1/18")
-    
+
     def __str__(self):
         """String for representing the Model object."""
         return self.review_text

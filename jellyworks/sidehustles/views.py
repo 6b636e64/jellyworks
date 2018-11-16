@@ -3,8 +3,14 @@ from django.views import generic
 from django.views.generic import TemplateView
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect
+from django.contrib.auth.decorators import permission_required
+from django.shortcuts import get_object_or_404
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 
 from jellyworks.settings import LOGOUT_REDIRECT_URL
+from sidehustles.forms import ChangeNameForm
+
 
 # Create your views here.
 
@@ -15,48 +21,24 @@ def index(request):
 
     #Counting the number of public profiles, reviews, and services
 
-    num_publicprofiles = publicProfile.objects.all().count() 
-    num_reviews = Reviews.objects.all().count()
-    num_services = Services.objects.all().count()
-    
-    
+
     context = {
-        "num_publicprofiles": num_publicprofiles,
-        "num_reviews": num_reviews,
-        "num_services": num_services,
         "list_o_services": Services.objects.all()
     }
-    
+
     return render(request,'index.html',context=context)
 
 def profile(request):
     if request.user.is_authenticated:
         return render(request, 'profile.html')
-    else: 
-        return redirect('index') 
+    else:
+        return redirect('index')
 
 def about(request):
     return render(request, 'about.html')
 
 
 def product(request, pk):
-
-    seller_name = publicProfile.public_displayname
-    service_name = Services.service_name
-    service_reviews = Services.service_reviews
-    service_likes = Reviews.review_like_count
-    service_stars = Reviews.review_star_count
-    
-    context = {
-        "list_o": Services.objects.all(),
-        "list_o_reviews": Reviews.objects.all(),
-        "seller_name" : seller_name,
-        "service_name" : service_name,
-        "service_reviews" : service_reviews,
-        "service_likes" : service_likes,
-        "service_stars" : service_stars
-    }
-
     return render(request, 'product.html', {'service': Services.objects.get(id=pk), 'review': Reviews.objects.get(id=pk)})
 
 
@@ -80,3 +62,34 @@ def filtersearch(request):
     return render(request, 'filtersearch.html', context=context)
 
 
+
+# def profileChanges(request, pk):
+#     """View function for changing name."""
+#     user_instance = get_object_or_404(UserInstance, pk=pk)
+
+#     # If this is a POST request then process the Form data
+#     if request.method == 'POST':
+
+#         # Create a form instance and populate it with data from the request (binding):
+#         form = ChangeNameForm(request.POST)
+
+#         # Check if the form is valid:
+#         if form.is_valid():
+#             # process the data in form.cleaned_data as required (here we just write it to the model due_back field)                                                                                                                
+#             user_instance.public_fname = form.cleaned_data['first_name']
+#             user_instance.public_lname = form.cleaned_data['last_name']
+#             user_instance.save()
+
+#             # redirect to a new URL:
+#             return HttpResponseRedirect(reverse('/') )
+
+#     # If this is a GET (or any other method) create the default form.
+#     else:
+#         form = ChangeNameForm(initial={'first_name': 'Jane', 'last_name':'Doe'})
+
+#     context = {
+#         'form': form,
+#         'user_instance': user_instance,
+#     }
+
+#     return render(request, 'profile_changes.html', context)
