@@ -1,16 +1,16 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views import generic
 from django.views.generic import TemplateView
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import redirect
 from django.contrib.auth.decorators import permission_required
-from django.shortcuts import get_object_or_404
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+from django.contrib import messages
+from django.contrib.auth import update_session_auth_hash
 
 from jellyworks.settings import LOGOUT_REDIRECT_URL
-from sidehustles.forms import ChangeNameForm
-
+#from sidehustles.forms import ChangeNameForm
+from django.contrib.auth.forms import PasswordChangeForm
 
 # Create your views here.
 
@@ -62,6 +62,25 @@ def filtersearch(request):
     return render(request, 'filtersearch.html', context=context)
 
 
+def change_password(request):
+    if request.user.is_authenticated:
+        if request.method == 'POST':
+            form = PasswordChangeForm(request.user, request.POST)
+            if form.is_valid():
+                user = form.save()
+                update_session_auth_hash(request, user)  # Important!
+                messages.success(request, 'Your password was successfully updated!')
+                return redirect('profile')
+            else:
+                messages.error(request, 'Please correct the error below.')
+        else:
+            form = PasswordChangeForm(request.user)
+            context = {
+                'form' : form
+            }
+            return render(request, 'accounts/change_password.html', context=context)
+    else:
+        return redirect('index') 
 
 # def profileChanges(request, pk):
 #     """View function for changing name."""
