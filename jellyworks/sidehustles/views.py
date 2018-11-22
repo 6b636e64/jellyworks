@@ -61,6 +61,7 @@ def filtersearch(request):
     return render(request, 'filtersearch.html', context=context)
 
 
+<<<<<<< HEAD
 def profile_changes(request):
   #if request.method == "POST":
         #form = UserEdit(request.POST)
@@ -74,6 +75,8 @@ def profile_changes(request):
             form = UserEdits()
             return render(request,'profile_changes.html', {'form': form}) 
 
+=======
+>>>>>>> 31318742c7185ee3247281caeaf62ad8bd2d7151
 def change_password(request):
     if request.user.is_authenticated:
         if request.method == 'POST':
