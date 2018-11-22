@@ -36,6 +36,10 @@ class appUser(models.Model):
         """String for representing the Model object."""
         return self.user_unique_email
 
+   # def get_absolute_url(self):
+   #    return reverse("profile_changes/", args=[str(self.id)])
+
+
 class Services(models.Model):
     """Model representing a service offered on Sidehustles."""
 
@@ -67,6 +71,7 @@ class Services(models.Model):
                   ("Sat", "Sat"), ("Sun", "Sun"), ("Unavailable", "Unavailable")]
     availability = models.CharField(max_length=9, choices=AVAILABILITY_TYPE, default='8')
     # id = models.UUIDField(primary_key = True, default=uuid.uuid4, unique=True)
+    
     def __str__(self):
         """String for representing the Model object."""
         return self.service_name

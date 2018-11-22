@@ -10,7 +10,9 @@ urlpatterns = [
     path('filtersearch/', views.filtersearch, name="filtersearch"),
     path('product/<int:pk>', views.product, name="product"),
     path('about/', views.about, name="about"),
-    #path('password_reset_confirm/', views.password_reset_confirm, name="password_reset_confirm"),
+    path('change_password/', views.change_password, name="change_password"),
+    path('sidehustles/profile_changes/', views.profile_changes, name="profile_changes"),
+
     #path('profile/<int:pk>/profile_changes', views.profileChanges, name='profile_changes'),
 
 ]
