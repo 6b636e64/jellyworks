@@ -62,7 +62,7 @@ def filtersearch(request):
 
 def profile_changes(request):
 	if request.method == "POST":
-		form = UserEdits(request.POST)
+		form = UserEdits(data=request.POST, instance=request.user)
 		if form.is_valid():
 			edits = form.save()
 			edits.save()

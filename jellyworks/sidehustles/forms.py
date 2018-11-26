@@ -1,9 +1,10 @@
 from django import forms
-from .models import appUser
+#from .models import appUser
+from django.contrib.auth.models import User
 
 class UserEdits(forms.ModelForm):
 
     class Meta:
-        model = appUser
-        fields = ('user_fname', 'user_lname',)
+        model = User
+        fields = ['first_name', 'last_name']
       
