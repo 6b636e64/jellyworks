@@ -38,7 +38,13 @@ def about(request):
 
 
 def product(request, pk):
-    return render(request, 'product.html', {'service': Services.objects.get(id=pk), 'review': Reviews.objects.get(id=pk)})
+
+    context = {
+        'service': Services.objects.get(id=pk), 
+        'review': Reviews.objects.get(id=pk)
+    }
+
+    return render(request, 'product.html', context)
 
 
 def filtersearch(request):

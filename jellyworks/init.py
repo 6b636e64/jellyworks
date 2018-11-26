@@ -37,19 +37,6 @@ for i in range(1,10):
     user.save()
     users.append(user)   
   
-
-# Create Reviews
-reviews = []
-for i in range(1, 10):
-    
-    review_like_count = int(fake.random_number())
-    review_star_count = fake.random_number(digits=None, fix_len=False)
-    review_text = fake.text(1000)
-    review_date_posted = fake.date()
-    review = Reviews(review_like_count = review_like_count, review_star_count = review_star_count, review_text = review_text, review_date_posted = review_date_posted)
-    review.save()
-    reviews.append(review)
-  
   
 # Create Services
 services = []
@@ -60,7 +47,6 @@ for i in range(1, 5):
     service_category = fake.text(200)
     service_location = fake.street_address()
     service_proficiency = int(fake.random_number())
-    service_reviews = fake.text(500)
     skill_info = fake.job()
     x = randint(0, len(Services.SKILL_TYPE)-1)
     skill = Services.SKILL_TYPE[x][0]
@@ -68,10 +54,21 @@ for i in range(1, 5):
     location = Services.LOCATION_TYPE[x][0]
     x = randint(0, len(Services.AVAILABILITY_TYPE)-1)
     availability = Services.AVAILABILITY_TYPE[x][0]
-    service = Services(public_displayname = public_displayname, service_name = service_name, service_cost = service_cost, service_category = service_category, service_location = service_location, service_proficiency = service_proficiency, service_reviews = service_reviews,skill_info = skill_info, skill = skill, location = location, availability = availability)
+    service = Services(public_displayname = public_displayname, service_name = service_name, service_cost = service_cost, service_category = service_category, service_location = service_location, service_proficiency = service_proficiency, skill_info = skill_info, skill = skill, location = location, availability = availability)
     service.save()
     services.append(service)
 
+
+# Create Reviews
+reviews = []
+for i in range(1, 10):
+    review_like_count = int(fake.random_number())
+    review_star_count = fake.random_number(digits=None, fix_len=False)
+    review_text = fake.text(1000)
+    review_date_posted = fake.date()
+    review = Reviews(review_like_count = review_like_count, review_star_count = review_star_count, review_text = review_text, review_date_posted = review_date_posted)
+    review.save()
+    reviews.append(review)
 
 print("User:")
 for u in appUser.objects.all():

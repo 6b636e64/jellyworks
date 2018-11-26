@@ -58,9 +58,6 @@ class Services(models.Model):
     # A integer field to indicate proficieny (scale to be determined)
     service_proficiency = models.IntegerField()
 
-    # A character field for a review.
-    service_reviews = models.TextField(help_text = "Type a review.")
-
     skill_info = models.CharField(max_length=1000, help_text="Tell us more about your skill!", default="I am very skilled!")
     SKILL_TYPE = [("Computers", "Computers"), ("Music", "Music"), ("Art", "Art"), ("Sports", "Sports"), ("Manual Labor", "Manual Labor"),
                   ("Tutoring", "Tutoring")]
