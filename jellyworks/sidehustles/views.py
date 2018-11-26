@@ -66,7 +66,7 @@ def profile_changes(request):
 		if form.is_valid():
 			edits = form.save()
 			edits.save()
-			return render(request,'profile_changes.html', {'form': form}) 
+			return redirect('profile')
 	else:
 		form = UserEdits()
 	return render(request,'profile_changes.html', {'form': form}) 
