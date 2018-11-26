@@ -47,13 +47,21 @@
 
   <div class="col-sm-4 btm-row">
     <h3>Reviews</h3>
-    <div class="customer-review">
+    <!-- <div class="customer-review">
       <p>
       <i class="fa fa-star 2x"></i>{{ service.service_stars }}</p>
-    </div>
+    </div> -->
 
     <div class="form-group">
-      <label for="comment">Review: {{ review.review_text }}</label>
+
+      {% if reviews %}
+      {% for review in reviews %}
+      <p>Review: {{ review.review_text }}</p>
+      {% endfor %}
+
+      {% else %}
+      <p>There are no reviews yet.</p>
+      {% endif %}
       <textarea class="form-control" rows="3" id="comment"></textarea>
       <button type="button" class="btn-product btn-outline-primary review">Submit</button>
     </div>

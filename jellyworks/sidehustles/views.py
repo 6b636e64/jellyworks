@@ -41,7 +41,7 @@ def product(request, pk):
 
     context = {
         'service': Services.objects.get(id=pk), 
-        'review': Reviews.objects.get(id=pk)
+        'reviews': Reviews.objects.filter(service=pk).distinct()
     }
 
     return render(request, 'product.html', context)

@@ -58,7 +58,6 @@ for i in range(1, 5):
     service.save()
     services.append(service)
 
-
 # Create Reviews
 reviews = []
 for i in range(1, 10):
@@ -66,7 +65,8 @@ for i in range(1, 10):
     review_star_count = fake.random_number(digits=None, fix_len=False)
     review_text = fake.text(1000)
     review_date_posted = fake.date()
-    review = Reviews(review_like_count = review_like_count, review_star_count = review_star_count, review_text = review_text, review_date_posted = review_date_posted)
+    r_service = services[fake.random_int(0, len(services)) - 1]
+    review = Reviews(service = r_service, review_like_count = review_like_count, review_star_count = review_star_count, review_text = review_text, review_date_posted = review_date_posted)
     review.save()
     reviews.append(review)
 
