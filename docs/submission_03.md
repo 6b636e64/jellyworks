@@ -12,3 +12,5 @@ Sarah Manlove, Edwood Brice, Chinh Do, Suzy Balles, and Jeff Reardon
 
 
 ## Problems/Successes
+
+## Team Choice
