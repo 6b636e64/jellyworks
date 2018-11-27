@@ -67,15 +67,21 @@ def filtersearch(request):
     return render(request, 'filtersearch.html', context=context)
 
 def profile_changes(request):
-	if request.method == "POST":
-		form = UserEdits(data=request.POST, instance=request.user)
-		if form.is_valid():
-			edits = form.save()
-			edits.save()
-			return redirect('profile')
-	else:
-		form = UserEdits()
-	return render(request,'profile_changes.html', {'form': form}) 
+    if request.user.is_authenticated:
+        if request.method == "POST":
+            form = UserEdits(data=request.POST, instance=request.user)
+            if form.is_valid():
+                edits = form.save()
+                edits.save()
+                return redirect('profile')
+        else:
+            form = UserEdits()
+            context = {
+                'form' : form
+            }
+            return render(request, 'profile_changes.html', context=context) 
+    else:
+        return redirect('index')
 
 def change_password(request):
     if request.user.is_authenticated:
