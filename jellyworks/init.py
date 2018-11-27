@@ -7,6 +7,7 @@ from django.contrib.auth.models import User
 from faker import Faker
 from faker.providers import person, internet, date_time, address, lorem
 
+from users.models import CustomUser
 from sidehustles.models import Services, publicProfile, appUser, Reviews
 
 fake = Faker()
@@ -96,7 +97,7 @@ print(f"Service: {service.service_name}")
 username = "admin"
 password = "admin"
 email = "admin@326.edu"
-adminuser = User.objects.create_user(username, email, password)
+adminuser = CustomUser.objects.create_user(username, email, password)
 adminuser.save()
 adminuser.is_superuser = True
 adminuser.is_staff = True

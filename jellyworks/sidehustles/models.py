@@ -23,7 +23,6 @@ class UserInstance(models.Model):
     def __str__(self):
         return f"{self.id} {self.public_fname}"
 
-
 class appUser(models.Model):
     """Model representing a private student (user account)"""
 
