@@ -46,6 +46,7 @@ def product(request, pk):
         if form.is_valid():
             review_instance.editable_text = form.cleaned_data['editable_text']
             review_instance.save()
+            form.save()
             return redirect('product', pk)
 
     else:
