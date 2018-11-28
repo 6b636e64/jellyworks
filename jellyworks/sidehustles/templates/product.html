@@ -53,19 +53,23 @@
     </div> -->
 
 
-    <form method="POST" class="post-form">{% csrf_token %}
+    <form method="POST" class="post-form" action="">{% csrf_token %}
       <div class="form-group">
 
         {% if reviews %}
         {% for review in reviews %}
         <p>Review: {{ review.review_text }}</p>
-        {% endfor %}
 
+        {% endfor %}
+        <p>Review: {{ review.editable_text }}</p>
         {% else %}
         <p>There are no reviews yet.</p>
         {% endif %}
-        <textarea class="form-control" rows="3" id="comment"></textarea>
-        <button type="button" class="btn-product btn-outline-primary review">Submit</button>
+        <!--<textarea class="form-control" rows="3" id="comment"></textarea>-->
+        <table>
+          {{form.as_table}}
+        </table>
+        <button type="submit" class="btn-product btn-outline-primary review">Submit</button>
       </div>
     </form>
   </div>
