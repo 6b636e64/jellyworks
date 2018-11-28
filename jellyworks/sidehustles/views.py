@@ -7,6 +7,7 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.contrib import messages
 from django.contrib.auth import update_session_auth_hash
+from django.core.exceptions import ValidationError
 
 from jellyworks.settings import LOGOUT_REDIRECT_URL
 #from sidehustles.forms import ChangeNameForm
@@ -38,14 +39,14 @@ def about(request):
 
 
 def product(request, pk):
-    review_instance = get_object_or_404(Reviews, service=pk)
+    review_instance = get_object_or_404(Reviews, pk=pk)
 
     if request.method == "POST":
-        form = AddReview(data=request.POST, instance=request.user)
+        form = AddReview(request.POST, instance=request.user)
         if form.is_valid():
             review_instance.editable_text = form.cleaned_data['editable_text']
             review_instance.save()
-            return redirect('product')
+            return redirect('product', pk)
 
     else:
         form = AddReview()
