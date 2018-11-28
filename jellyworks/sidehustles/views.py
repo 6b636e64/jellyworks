@@ -15,7 +15,7 @@ from django.contrib.auth.forms import PasswordChangeForm
 # Create your views here.
 
 from sidehustles.models import publicProfile, appUser, Reviews, Services
-from .forms import UserEdits
+from .forms import UserEdits, AddReview
 
 
 def index(request):
@@ -38,13 +38,27 @@ def about(request):
 
 
 def product(request, pk):
+    review_instance = get_object_or_404(Reviews, service=pk)
+
+    if request.method == "POST":
+        form = AddReview(data=request.POST, instance=request.user)
+        if form.is_valid():
+            review_instance.editable_text = form.cleaned_data['editable_text']
+            review_instance.save()
+            return redirect('product')
+
+    else:
+        form = AddReview()
 
     context = {
-        'service': Services.objects.get(id=pk), 
-        'reviews': Reviews.objects.filter(service=pk).distinct()
+        'service': Services.objects.get(id=pk),
+        'reviews': Reviews.objects.filter(service=pk).distinct(),
+        'form' : form,
+        'review_instance' : Reviews
     }
+    return render(request, 'product.html', context=context)
 
-    return render(request, 'product.html', context)
+#   return render(request, 'product.html', context)    
 
 
 def filtersearch(request):

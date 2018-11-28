@@ -81,6 +81,8 @@ class Reviews(models.Model):
     review_like_count = models.IntegerField()
     review_star_count = models.IntegerField()
     review_text = models.TextField(help_text = "Type a review", default="Macklemore is amazeballs")
+    #editable review text not being generated with fake data
+    editable_text = models.TextField(help_text = "Type a review")
     review_date_posted = models.DateField(default="1/1/18")
 
     def __str__(self):
