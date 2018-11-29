@@ -42,9 +42,10 @@ def product(request, pk):
     if request.method == "POST":
         form = AddReview(request.POST)
         if form.is_valid():
-        	edits = form.save(commit=False)
-        	edits.review_text = form.cleaned_data['editable_text']
-        	edits.save()
+            edits = form.save(commit=False)
+            edits.review_text = form.cleaned_data['editable_text']
+            edits.service = Services.objects.get(id=pk)
+            edits.save()
         return redirect('product', pk=pk)
     else:
         form = AddReview()
