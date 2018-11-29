@@ -39,24 +39,21 @@ def about(request):
 
 
 def product(request, pk):
-    review_instance = get_object_or_404(Reviews, pk=pk)
-
     if request.method == "POST":
-        form = AddReview(request.POST, instance=request.user)
+        form = AddReview(request.POST)
         if form.is_valid():
-            review_instance.editable_text = form.cleaned_data['editable_text']
-            review_instance.save()
-            form.save()
-            return redirect('product', pk)
-
+        	edits = form.save(commit=False)
+        	edits.review_text = form.cleaned_data['editable_text']
+        	edits.save()
+        return redirect('product', pk=pk)
     else:
         form = AddReview()
 
     context = {
         'service': Services.objects.get(id=pk),
         'reviews': Reviews.objects.filter(service=pk).distinct(),
-        'form' : form,
-        'review_instance' : Reviews
+        'form' : form
+        #'review_instance' : Reviews
     }
     return render(request, 'product.html', context=context)
 

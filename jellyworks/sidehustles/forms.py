@@ -1,5 +1,7 @@
 from django import forms
+from django.forms import ModelForm
 from .models import Reviews
+from . import models
 from users.models import CustomUser
 from django.core.exceptions import ValidationError
 
@@ -14,7 +16,6 @@ class AddReview(forms.ModelForm):
     def clean_editable_text(self):
        data = self.cleaned_data['editable_text']
 
-       # Check if a date is not in the past.
        if "fuck" in data :
            raise ValidationError(("Don't be rude!"))
 
