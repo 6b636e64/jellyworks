@@ -70,7 +70,7 @@ class Services(models.Model):
     
     def __str__(self):
         """String for representing the Model object."""
-        return self.service_name
+        return self.skill_info
 
     def get_absolute_url(self):
         return reverse("product", args=[str(self.id)])
