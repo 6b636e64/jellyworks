@@ -115,3 +115,26 @@ Run the django server with:
 ====================================================================
 """
 print(message)
+
+username = "kendrick"
+password = "lamar"
+email = "kendrick@lamar.edu"
+fakeuser = CustomUser.objects.create_user(username, email, password)
+fakeuser.save()
+fakeuser.is_superuser = False
+fakeuser.is_staff = True
+fakeuser.save()
+message = f"""
+====================================================================
+The database has been setup with the following credentials:
+  username: {username}
+  password: {password}
+  email: {email}
+You will need to use the username {username} and password {password}
+to login to the administrative webapp in Django.
+Please visit http://localhost:8080/admin to login to the admin app.
+Run the django server with:
+  $ python3 manage.py runserver 0.0.0.0:8080"
+====================================================================
+"""
+print(message)
