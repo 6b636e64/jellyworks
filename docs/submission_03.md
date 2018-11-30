@@ -8,7 +8,7 @@ Since Project 2, we have modified our application’s models.py file and removed
 Sarah Manlove, Edwood Brice, Chinh Do, Suzy Balles, and Jeff Reardon
 
 ## Video Link
-
+[Youtube](https://youtu.be/KUyWIQ83aZU)
 
 ## Design Overview
 Our application’s login/logout and user interaction functionality is dependent on context. Subsequently, when a user is logged in and authenticated, they will be able to navigate to their profile and interact with forms that logged out users cannot. Additionally, on product pages, users are able to submit reviews that provide insight about what a particular vendor is offering. 
