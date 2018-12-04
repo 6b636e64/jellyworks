@@ -80,7 +80,7 @@ class Reviews(models.Model):
     service = models.ForeignKey(Services, on_delete=models.CASCADE, null=True, related_name='service')
     user = models.ForeignKey('users.CustomUser', on_delete=models.CASCADE, blank=True, null=True, related_name='user')
     review_like_count = models.IntegerField(null=True)
-    review_text = models.TextField(help_text = "Type a review", default="Macklemore is amazeballs")
+    review_text = models.TextField(help_text = "Type a review")
     #editable review text not being generated with fake data
     editable_text = models.TextField(help_text = "Type a review")
     review_date_posted = models.DateField(null=True)
