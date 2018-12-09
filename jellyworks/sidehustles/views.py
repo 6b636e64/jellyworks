@@ -8,6 +8,8 @@ from django.urls import reverse
 from django.contrib import messages
 from django.contrib.auth import update_session_auth_hash
 from django.core.exceptions import ValidationError
+from django.contrib.auth.models import User
+from .filters import UserFilter
 
 from jellyworks.settings import LOGOUT_REDIRECT_URL
 #from sidehustles.forms import ChangeNameForm
