@@ -68,6 +68,10 @@ def product(request, pk):
 
 #   return render(request, 'product.html', context)    
 
+def search(request):
+    user_list = Services.objects.all()
+    user_filter = UserFilter(request.GET, queryset=user_list)
+    return render(request, 'user_list.html', {'filter': user_filter})
 
 def filtersearch(request):
     user_list = Services.objects.all()
