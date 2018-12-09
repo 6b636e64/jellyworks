@@ -10,6 +10,8 @@ class publicProfile(models.Model):
     public_lname = models.CharField(max_length=50, help_text="Last name", default="Smalls")
     public_displayname = models.CharField(max_length=30, help_text="Display name", default="Tupac")
     public_email = models.CharField(max_length=50, help_text="Email", default="Tupac@gmail.com")
+    image = models.ImageField(upload_to='uploads/', default="uploads/profile_pic_placeholder.jpg")
+
     def __str__(self):
         """String for representing the Model object."""
         return self.public_displayname
@@ -19,9 +21,14 @@ class UserInstance(models.Model):
 
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, help_text='Unique ID for this particular user')
     user = models.ForeignKey('publicProfile', on_delete=models.SET_NULL, null=True)
+    image = models.ImageField(upload_to='uploads/', default="uploads/profile_pic_placeholder.jpg")
 
     def __str__(self):
         return f"{self.id} {self.public_fname}"
+
+class Images(models.Model):
+    image = models.ImageField(upload_to='uploads/', default="uploads/profile_pic_placeholder.jpg")
+    user = models.ForeignKey(UserInstance, on_delete=models.CASCADE, null=True)
 
 class appUser(models.Model):
     """Model representing a private student (user account)"""

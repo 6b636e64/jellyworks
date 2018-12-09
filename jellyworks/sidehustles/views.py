@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404, render_to_response
 from django.views import generic
 from django.views.generic import TemplateView
 from django.contrib.auth.decorators import login_required
@@ -8,6 +8,7 @@ from django.urls import reverse
 from django.contrib import messages
 from django.contrib.auth import update_session_auth_hash
 from django.core.exceptions import ValidationError
+from django.template import RequestContext
 
 from jellyworks.settings import LOGOUT_REDIRECT_URL
 #from sidehustles.forms import ChangeNameForm
@@ -16,8 +17,8 @@ from django.contrib.auth.forms import PasswordChangeForm
 # Create your views here.
 
 from sidehustles.models import publicProfile, appUser, Reviews, Services
-from .forms import UserEdits, AddReview
-
+from .forms import UserEdits, AddReview, ProfileImage
+from users.models import CustomUser
 
 def index(request):
     """This is the view function for the sidehustles landing page."""
@@ -125,33 +126,15 @@ def change_password(request):
     else:
         return redirect('index') 
 
-# def profileChanges(request, pk):
-#     """View function for changing name."""
-#     user_instance = get_object_or_404(UserInstance, pk=pk)
+def upload_image(request):
+    if request.method == 'POST':
+        form = ProfileImage(request.POST, request.FILES, initial={'user': request.user})
+        if form.is_valid():
+            newImage = CustomUser(image = request.FILES['image'])
+            newImage.save()
 
-#     # If this is a POST request then process the Form data
-#     if request.method == 'POST':
-
-#         # Create a form instance and populate it with data from the request (binding):
-#         form = ChangeNameForm(request.POST)
-
-#         # Check if the form is valid:
-#         if form.is_valid():
-#             # process the data in form.cleaned_data as required (here we just write it to the model due_back field)                                                                                                                
-#             user_instance.public_fname = form.cleaned_data['first_name']
-#             user_instance.public_lname = form.cleaned_data['last_name']
-#             user_instance.save()
-
-#             # redirect to a new URL:
-#             return HttpResponseRedirect(reverse('/') )
-
-#     # If this is a GET (or any other method) create the default form.
-#     else:
-#         form = ChangeNameForm(initial={'first_name': 'Jane', 'last_name':'Doe'})
-
-#     context = {
-#         'form': form,
-#         'user_instance': user_instance,
-#     }
-
-#     return render(request, 'profile_changes.html', context)
+            return redirect('profile')
+    else:
+        form = ProfileImage()
+    
+    return render(request, 'change_picture.html', {'form':form, })

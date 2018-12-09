@@ -6,7 +6,7 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-sm-3", id="leftside">
-      <img class="product" src="{% static "sidehustles/images/profile_pic_placeholder.jpg" %}" alt="Placeholder">
+      <img class="product" src="{{ CustomUser.image.url|default:"uploads/profile_pic_placeholder.jpg" }}" alt="Placeholder">
       <div class="stuffs">
         <h2>Settings</h2>
         <ul class="nav flex-column">
@@ -14,7 +14,7 @@
             <a class="nav-link" href="{% url 'change_password' %}">Change Password</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Update Profile Picture</a>
+            <a class="nav-link" href="{% url 'change_picture' %}">Update Profile Picture</a>
           </li>
           <li class="nav-item">
              <a class="nav-link active" href="{% url 'profile_changes' %}">Edit Personal Information</a>
