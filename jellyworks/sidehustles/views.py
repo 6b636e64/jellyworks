@@ -31,7 +31,8 @@ def index(request):
 
 def profile(request):
     if request.user.is_authenticated:
-        return render(request, 'profile.html')
+        context = {"user": request.user}
+        return render(request, 'profile.html', context)
     else:
         return redirect('index')
 
@@ -128,11 +129,10 @@ def change_password(request):
 
 def upload_image(request):
     if request.method == 'POST':
-        form = ProfileImage(request.POST, request.FILES, initial={'user': request.user})
+        form = ProfileImage(request.POST, request.FILES, instance=request.user)
         if form.is_valid():
-            newImage = CustomUser(image = request.FILES['image'])
+            newImage = form.save()
             newImage.save()
-
             return redirect('profile')
     else:
         form = ProfileImage()

@@ -29,7 +29,12 @@ class AddReview(ModelForm):
         model = Reviews
         fields = ['review_text']
 
-class ProfileImage(forms.Form):
-    image = forms.ImageField()
+class ProfileImage(forms.ModelForm):
+
+    class Meta:
+      model = CustomUser
+      fields = ['image']
+
+
 
 
