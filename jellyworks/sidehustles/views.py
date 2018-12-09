@@ -8,7 +8,12 @@ from django.urls import reverse
 from django.contrib import messages
 from django.contrib.auth import update_session_auth_hash
 from django.core.exceptions import ValidationError
+<<<<<<< HEAD
 from django.template import RequestContext
+=======
+from django.contrib.auth.models import User
+from .filters import UserFilter
+>>>>>>> origin
 
 from jellyworks.settings import LOGOUT_REDIRECT_URL
 #from sidehustles.forms import ChangeNameForm
@@ -70,6 +75,10 @@ def product(request, pk):
 
 #   return render(request, 'product.html', context)    
 
+def search(request):
+    user_list = Services.objects.all()
+    user_filter = UserFilter(request.GET, queryset=user_list)
+    return render(request, 'filtersearch.html', {'filter': user_filter})
 
 def filtersearch(request):
     user_list = Services.objects.all()
