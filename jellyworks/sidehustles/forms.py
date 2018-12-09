@@ -5,6 +5,8 @@ from . import models
 from users.models import CustomUser
 from django.core.exceptions import ValidationError
 from django.utils.translation import ugettext_lazy as _
+from .models import UserInstance
+from .models import publicProfile
 
 class UserEdits(forms.ModelForm):
 
@@ -26,3 +28,8 @@ class AddReview(ModelForm):
     class Meta:
         model = Reviews
         fields = ['review_text']
+
+class ProfileImage(forms.Form):
+    image = forms.ImageField()
+
+
