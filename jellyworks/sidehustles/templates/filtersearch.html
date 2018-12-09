@@ -1,6 +1,6 @@
-{% extends "base_generic.html" %}
-{% block content %}
+{% extends 'base_generic.html' %}
 
+{% block content %}
 <head>
 	<!-- add meta and title here -->
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
@@ -14,88 +14,25 @@
 </head>
 
 <body>
-
-	<!sidebar>
+<!sidebar>
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
-
-
-	<div class="container">
+  	<div class="container">
 		<br>
 		<h1 class="text-center">Find your SideHustle match!</h1>
 		<hr>
 
+		<h3>Filter:</h3>
 		<div class="row">
-			<aside class="col-sm-4">
-				<p>Filters</p>
+
+  <form method="get">
+    {{ filter.form.as_p }}
+    <button type="submit">Search</button>
+  </form>
 
 
-				<div class="card">
-					<article class="card-group-item">
-						<header class="card-header">
-							<h6 class="title">Skill Type </h6>
-						</header>
-						<div class="filter-content">
-							<div class="card-body">
-								{% for type in skilltypes%}
-								<label class="form-check">
-									<input class="form-check-input" type="radio" name="exampleRadio" value="">
-									<span class="form-check-label">
-										{{type}}
-									</span>
-								</label>
-								{% endfor%}
-							</div> <!-- card-body.// -->
-						</div>
-					</article> <!-- card-group-item.// -->
-
-					<article class="card-group-item">
-						<header class="card-header">
-							<h6 class="title">Location </h6>
-						</header>
-						<div class="filter-content">
-							<div class="card-body">
-								{% for location in location_types%}
-								<label class="form-check">
-									<input class="form-check-input" type="radio" name="exampleRadio" value="">
-									<span class="form-check-label">
-										{{location}}
-									</span>
-								</label>
-								{% endfor%}
-							</div> <!-- card-body.// -->
-						</div>
-					</article> <!-- card-group-item.// -->
-
-					<article class="card-group-item">
-						<header class="card-header">
-							<h6 class="title">Availability </h6>
-						</header>
-						<div class="filter-content">
-							<div class="card-body">
-								<form>
-									{% for date in availability_types%}
-									<label class="form-check">
-										<input class="form-check-input" type="checkbox" value="">
-										<span class="form-check-label">
-											{{date}}
-										</span>
-									</label> <!-- form-check.// -->
-									{% endfor %}
-								</form>
-
-							</div> <!-- card-body.// -->
-						</div>
-					</article> <!-- card-group-item.// -->
-				</div> <!-- card.// -->
-
-
-			</aside> <!-- col.// -->
-
-			<!users>
-			<aside class="col-sm-4">
-
-				{% for user in users%}
-				<div class="card">
+  <ul>
+  {% for user in filter.qs %}
+    <div class="card">
 					<h5 class="card-header"> {{user.skill_info}}</h5>
 					<div class="card-body">
 						<h5 class="card-title">{{user.public_displayname}}</h5>
@@ -103,12 +40,9 @@
 						<a class="btn btn-dark" href="{{ user.get_absolute_url }}" role = "button">Match</a></p>
 					</div>
 				</div>
-				{% endfor %}
-
-			</aside>
-		</div>
-	</div>
-
-
-</body>
+  {% endfor %}
+  </ul>
+			</div>
+			</div>
+<body/>
 {% endblock %}
