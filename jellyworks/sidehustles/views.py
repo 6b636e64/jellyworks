@@ -130,34 +130,15 @@ def change_password(request):
             return render(request, 'accounts/change_password.html', context=context)
     else:
         return redirect('index') 
-
-# def profileChanges(request, pk):
-#     """View function for changing name."""
-#     user_instance = get_object_or_404(UserInstance, pk=pk)
-
-#     # If this is a POST request then process the Form data
-#     if request.method == 'POST':
-
-#         # Create a form instance and populate it with data from the request (binding):
-#         form = ChangeNameForm(request.POST)
-
-#         # Check if the form is valid:
-#         if form.is_valid():
-#             # process the data in form.cleaned_data as required (here we just write it to the model due_back field)                                                                                                                
-#             user_instance.public_fname = form.cleaned_data['first_name']
-#             user_instance.public_lname = form.cleaned_data['last_name']
-#             user_instance.save()
-
-#             # redirect to a new URL:
-#             return HttpResponseRedirect(reverse('/') )
-
-#     # If this is a GET (or any other method) create the default form.
-#     else:
-#         form = ChangeNameForm(initial={'first_name': 'Jane', 'last_name':'Doe'})
-
-#     context = {
-#         'form': form,
-#         'user_instance': user_instance,
-#     }
-
-#     return render(request, 'profile_changes.html', context)
+    
+def upload_image(request):
+    if request.method == 'POST':
+        form = ProfileImage(request.POST, request.FILES, instance=request.user)
+        if form.is_valid():
+            newImage = form.save()
+            newImage.save()
+            return redirect('profile')
+    else:
+        form = ProfileImage()
+    
+    return render(request, 'change_picture.html', {'form':form, })
