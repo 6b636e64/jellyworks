@@ -71,7 +71,7 @@ def product(request, pk):
 def search(request):
     user_list = Services.objects.all()
     user_filter = UserFilter(request.GET, queryset=user_list)
-    return render(request, 'user_list.html', {'filter': user_filter})
+    return render(request, 'filtersearch.html', {'filter': user_filter})
 
 def filtersearch(request):
     user_list = Services.objects.all()
