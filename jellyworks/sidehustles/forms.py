@@ -7,6 +7,7 @@ from django.core.exceptions import ValidationError
 from django.utils.translation import ugettext_lazy as _
 from .models import UserInstance
 from .models import publicProfile
+from django.contrib.auth.models import User
 
 class UserEdits(forms.ModelForm):
 
@@ -35,6 +36,11 @@ class ProfileImage(forms.ModelForm):
       model = CustomUser
       fields = ['image']
 
-
+class UserForm(ModelForm):
+    password = forms.CharField(widget=forms.PasswordInput())
+    email = forms.CharField(widget=forms.EmailInput())
+    class Meta:
+        model = CustomUser
+        fields = ('username', 'email', 'password', 'first_name', 'last_name')
 
 

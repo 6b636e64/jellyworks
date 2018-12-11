@@ -8,12 +8,8 @@ from django.urls import reverse
 from django.contrib import messages
 from django.contrib.auth import update_session_auth_hash
 from django.core.exceptions import ValidationError
-<<<<<<< HEAD
 from django.template import RequestContext
-=======
-from django.contrib.auth.models import User
-from .filters import UserFilter
->>>>>>> origin
+from django.contrib.auth import login
 
 from jellyworks.settings import LOGOUT_REDIRECT_URL
 #from sidehustles.forms import ChangeNameForm
@@ -22,7 +18,7 @@ from django.contrib.auth.forms import PasswordChangeForm
 # Create your views here.
 
 from sidehustles.models import publicProfile, appUser, Reviews, Services
-from .forms import UserEdits, AddReview, ProfileImage
+from .forms import UserEdits, AddReview, ProfileImage, UserForm
 from users.models import CustomUser
 
 def index(request):
@@ -147,3 +143,17 @@ def upload_image(request):
         form = ProfileImage()
     
     return render(request, 'change_picture.html', {'form':form, })
+
+
+def new_account(request):
+    if request.method == "POST":
+        form = UserForm(request.POST)
+        if form.is_valid():
+            new_user = CustomUser.objects.create_user(**form.cleaned_data)
+            login(request,new_user)
+            # redirect, or however you want to get to the main view
+            return redirect('index')
+    else:
+        form = UserForm() 
+
+    return render(request, 'new_account.html', {'form': form}) 

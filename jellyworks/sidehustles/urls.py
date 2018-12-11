@@ -10,7 +10,5 @@ urlpatterns = [
     path('change_password/', views.change_password, name="change_password"),
     path('sidehustles/profile_changes/', views.profile_changes, name="profile_changes"),
     path('change_picture', views.upload_image, name="change_picture"),
-
-    #path('profile/<int:pk>/profile_changes', views.profileChanges, name='profile_changes'),
-
+    path('new_account', views.new_account, name="new_account")
 ]
