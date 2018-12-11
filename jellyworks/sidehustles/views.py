@@ -10,6 +10,8 @@ from django.contrib.auth import update_session_auth_hash
 from django.core.exceptions import ValidationError
 from django.template import RequestContext
 from django.contrib.auth import login
+from django.contrib.auth.models import User
+from .filters import UserFilter
 
 from jellyworks.settings import LOGOUT_REDIRECT_URL
 #from sidehustles.forms import ChangeNameForm
