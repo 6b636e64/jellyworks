@@ -3,26 +3,13 @@ import uuid
 from django.db import models
 from django.urls import reverse
 
-class publicProfile(models.Model):
-    """Model representing a public profile."""
-
-    public_fname = models.CharField(max_length=50, help_text="First name", default="Biggie")
-    public_lname = models.CharField(max_length=50, help_text="Last name", default="Smalls")
-    public_displayname = models.CharField(max_length=30, help_text="Display name", default="Tupac")
-    public_email = models.CharField(max_length=50, help_text="Email", default="Tupac@gmail.com")
-    image = models.ImageField(upload_to='uploads/', default="uploads/profile_pic_placeholder.jpg")
-
-    def __str__(self):
-        """String for representing the Model object."""
-        return self.public_displayname
-
 
 class Services(models.Model):
     """Model representing a service offered on Sidehustles."""
 
     # A character field for the service name.
     service_name = models.CharField(max_length=200, default = "Tupac's 3-Pack Sodas")
-    public_displayname = models.CharField(max_length=30, help_text="Display name", default="Tupac")
+    user = models.ForeignKey('users.CustomUser', on_delete=models.CASCADE, blank=True, null=True, related_name='service_provider')
     # A integer field for the service cost.
     service_cost = models.IntegerField()
 

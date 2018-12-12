@@ -1,6 +1,5 @@
 from django.contrib import admin
-from sidehustles.models import publicProfile, Reviews, Services
+from sidehustles.models import Reviews, Services
 
-admin.site.register(publicProfile)
 admin.site.register(Reviews)
 admin.site.register(Services)

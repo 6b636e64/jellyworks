@@ -8,30 +8,27 @@ from faker import Faker
 from faker.providers import person, internet, date_time, address, lorem
 
 from users.models import CustomUser
-from sidehustles.models import Services, publicProfile, Reviews
+from sidehustles.models import Services, Reviews
 
 fake = Faker()
-  
-# Create 10 fake Public Profile
-publicProfiles = []
+
+
+#Create 10 fake users
+users = []
 for i in range(1, 10):
-    public_fname = fake.first_name()
-    public_lname = fake.last_name()
-    public_displayname = fake.name()
-    public_email = fake.ascii_free_email()
-    
-    profile = publicProfile(
-        public_fname = public_fname, public_lname = public_lname, public_displayname = public_displayname,  public_email =  public_email 
-    )
-    profile.save()
-    publicProfiles.append(profile)
-  
+    first_name = fake.first_name()
+    last_name = fake.last_name()
+    email = fake.ascii_free_email()
+    username = first_name
+    user = CustomUser(username = username, first_name = first_name, last_name = last_name, email = email)
+    user.save()
+    users.append(user)
   
 # Create Services
 services = []
 for i in range(1, 5):
     service_name = fake.text(20)
-    public_displayname = fake.name()
+    user = users[fake.random_int(0, len(services)) - 1]
     service_cost = int(fake.random_number())
     service_category = fake.text(200)
     service_location = fake.street_address()
@@ -43,7 +40,7 @@ for i in range(1, 5):
     location = Services.LOCATION_TYPE[x][0]
     x = randint(0, len(Services.AVAILABILITY_TYPE)-1)
     availability = Services.AVAILABILITY_TYPE[x][0]
-    service = Services(public_displayname = public_displayname, service_name = service_name, service_cost = service_cost, service_category = service_category, service_location = service_location, service_proficiency = service_proficiency, skill_info = skill_info, skill = skill, location = location, availability = availability)
+    service = Services(user = user, service_name = service_name, service_cost = service_cost, service_category = service_category, service_location = service_location, service_proficiency = service_proficiency, skill_info = skill_info, skill = skill, location = location, availability = availability)
     service.save()
     services.append(service)
 
@@ -58,22 +55,9 @@ for i in range(1, 10):
     review.save()
     reviews.append(review)
 
-users = []
-for i in range(1, 10):
-    first_name = fake.first_name()
-    last_name = fake.last_name()
-    email = fake.ascii_free_email()
-    username = first_name
-    user = CustomUser(username = username, first_name = first_name, last_name = last_name, email = email)
-    user.save()
-    users.append(user)
 
 print("\nUsers:")
 for p in CustomUser.objects.all():
-    print(p)
-
-print("\nPublic Profile:")
-for p in publicProfile.objects.all():
     print(p)
 
 print("\nReviews:")
@@ -86,7 +70,6 @@ for s in Services.objects.all():
 '''
 print("\nExample Service:")
 print(f"User: {service.user}")
-print(f"Public Profile: {service.profile}")
 print(f"Review: {service.review}")
 print(f"Service: {service.service_name}")
 '''

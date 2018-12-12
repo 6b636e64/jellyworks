@@ -5,7 +5,6 @@ from . import models
 from users.models import CustomUser
 from django.core.exceptions import ValidationError
 from django.utils.translation import ugettext_lazy as _
-from .models import publicProfile
 from django.contrib.auth.models import User
 
 class UserEdits(forms.ModelForm):
