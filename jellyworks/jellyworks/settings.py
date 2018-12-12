@@ -38,8 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'sidehustles.apps.SidehustlesConfig',
-    'users.apps.UsersConfig',
-    'django_filters'
+    'users.apps.UsersConfig'
 ]
 
 MIDDLEWARE = [

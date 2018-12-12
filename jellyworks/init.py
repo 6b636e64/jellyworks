@@ -8,7 +8,7 @@ from faker import Faker
 from faker.providers import person, internet, date_time, address, lorem
 
 from users.models import CustomUser
-from sidehustles.models import Services, publicProfile, appUser, Reviews
+from sidehustles.models import Services, publicProfile, Reviews
 
 fake = Faker()
   
@@ -25,18 +25,6 @@ for i in range(1, 10):
     )
     profile.save()
     publicProfiles.append(profile)
-
-
- # Create 10 fake users 
-users = []
-for i in range(1,10):
-    user_fname = fake.first_name()
-    user_lname = fake.last_name()
-    user_unique_email = fake.ascii_free_email()
-    user_password = fake.password()
-    user = appUser(user_fname = user_fname, user_lname = user_lname, user_unique_email = user_unique_email, user_password = user_password)
-    user.save()
-    users.append(user)   
   
   
 # Create Services
@@ -70,10 +58,7 @@ for i in range(1, 10):
     review.save()
     reviews.append(review)
 
-print("User:")
-for u in appUser.objects.all():
-    print(u)
-
+    
 print("\nPublic Profile:")
 for p in publicProfile.objects.all():
     print(p)

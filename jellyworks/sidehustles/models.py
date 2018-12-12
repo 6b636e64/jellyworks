@@ -30,20 +30,6 @@ class Images(models.Model):
     image = models.ImageField(upload_to='uploads/', default="uploads/profile_pic_placeholder.jpg")
     user = models.ForeignKey(UserInstance, on_delete=models.CASCADE, null=True)
 
-class appUser(models.Model):
-    """Model representing a private student (user account)"""
-
-    user_fname = models.CharField(max_length=50, help_text="First name", default="Kendrick")
-    user_lname = models.CharField(max_length=50, help_text="Last name", default="Lamar")
-    user_unique_email = models.CharField(max_length=100, default="Tupac@gmail.com")
-    user_password = models.CharField(max_length=50, default="abc123")
-
-    def __str__(self):
-        """String for representing the Model object."""
-        return self.user_unique_email
-
-   # def get_absolute_url(self):
-   #    return reverse("profile_changes/", args=[str(self.id)])
 
 
 class Services(models.Model):

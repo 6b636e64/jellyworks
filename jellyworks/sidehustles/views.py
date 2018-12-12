@@ -19,7 +19,7 @@ from django.contrib.auth.forms import PasswordChangeForm
 
 # Create your views here.
 
-from sidehustles.models import publicProfile, appUser, Reviews, Services
+from sidehustles.models import publicProfile, Reviews, Services
 from .forms import UserEdits, AddReview, ProfileImage, UserForm
 from users.models import CustomUser
 
