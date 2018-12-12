@@ -78,24 +78,6 @@ def search(request):
     user_filter = UserFilter(request.GET, queryset=user_list)
     return render(request, 'filtersearch.html', {'filter': user_filter})
 
-def filtersearch(request):
-    user_list = Services.objects.all()
-    skill_types = []
-    locations = []
-    days = []
-    for st in Services.SKILL_TYPE:
-        skill_types.append(st[0])
-    for st in Services.LOCATION_TYPE:
-        locations.append(st[0])
-    for st in Services.AVAILABILITY_TYPE:
-        days.append(st[0])
-    context = {
-        'users': user_list,
-        'skilltypes': skill_types,
-        'location_types': locations,
-        'availability_types': days
-    }
-    return render(request, 'filtersearch.html', context=context)
 
 def profile_changes(request):
     if request.user.is_authenticated:
