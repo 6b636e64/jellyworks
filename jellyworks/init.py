@@ -58,7 +58,20 @@ for i in range(1, 10):
     review.save()
     reviews.append(review)
 
-    
+users = []
+for i in range(1, 10):
+    first_name = fake.first_name()
+    last_name = fake.last_name()
+    email = fake.ascii_free_email()
+    username = first_name
+    user = CustomUser(username = username, first_name = first_name, last_name = last_name, email = email)
+    user.save()
+    users.append(user)
+
+print("\nUsers:")
+for p in CustomUser.objects.all():
+    print(p)
+
 print("\nPublic Profile:")
 for p in publicProfile.objects.all():
     print(p)
