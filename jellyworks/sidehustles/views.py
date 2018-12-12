@@ -148,14 +148,18 @@ def upload_image(request):
 
 
 def new_account(request):
-    if request.method == "POST":
-        form = UserForm(request.POST)
-        if form.is_valid():
-            new_user = CustomUser.objects.create_user(**form.cleaned_data)
-            login(request,new_user)
-            # redirect, or however you want to get to the main view
-            return redirect('index')
-    else:
-        form = UserForm() 
+    #shows page if not logged in
+    if not request.user.is_authenticated:
+        if request.method == "POST":
+            form = UserForm(request.POST)
+            if form.is_valid():
+                new_user = CustomUser.objects.create_user(**form.cleaned_data)
+                login(request,new_user)
+                return redirect('index')
+        else:
+            form = UserForm() 
 
-    return render(request, 'new_account.html', {'form': form}) 
+        return render(request, 'new_account.html', {'form': form})
+    #redirects to home page if is logged in
+    else:
+        return redirect('index')
