@@ -16,21 +16,6 @@ class publicProfile(models.Model):
         """String for representing the Model object."""
         return self.public_displayname
 
-class UserInstance(models.Model):
-    """Model representing a specific user."""
-
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, help_text='Unique ID for this particular user')
-    user = models.ForeignKey('publicProfile', on_delete=models.SET_NULL, null=True)
-    image = models.ImageField(upload_to='uploads/', default="uploads/profile_pic_placeholder.jpg")
-
-    def __str__(self):
-        return f"{self.id} {self.public_fname}"
-
-class Images(models.Model):
-    image = models.ImageField(upload_to='uploads/', default="uploads/profile_pic_placeholder.jpg")
-    user = models.ForeignKey(UserInstance, on_delete=models.CASCADE, null=True)
-
-
 
 class Services(models.Model):
     """Model representing a service offered on Sidehustles."""
