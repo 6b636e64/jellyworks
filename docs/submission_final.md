@@ -8,7 +8,7 @@ Our app aims to match “buyers” to “sellers”. Each seller will have the o
 #### Team Members 
 Edwood Brice, Chinh Do, Suzy Balles, Sarah Manlove, and Jeff Reardon
 
-#### User Interface
+## User Interface
 ##### Home (index.html)
 [See index.html](https://docs.google.com/presentation/d/13AwvAlMSheO8p57olAXyON-s7m54rFnKWu-zINYwF4M/edit?usp=sharing)
 This is the application’s homepage. This page will feature services on the Side Hustles platform. It will also allow buyers to search for a service of their interest (the search bar is a mock item, it is not functional).  When a buyer clickers on the “Match” button, they are brought to a specific service page. In terms of the data model, this page indicates a services name, category, location, cost and the number of likes it accrues.
@@ -28,7 +28,7 @@ The My Profile page enables users to make changes to their personal information 
 [See product.html](https://docs.google.com/presentation/d/1tV1oYvCJs7TnhmAxvQDywLC2mlTY-kI3gs0V36WHGY8/edit?usp=sharing)
 The product.html page focuses on a specific service, particularly the service that the user clicks on to be redirected to this page. This page describes the service in more detail, ranging from a photo for the product (uploaded up the owner) to the name of the service to price to reviews. This page’s data is derived from the Services and Reviews model. 
 
-#### Data Model
+## Data Model
 [Data Model Diagram](https://docs.google.com/presentation/d/19vwKNK6Vyh6MzYC5Ext7m2ycqMJo5GNv0LoV1OwoGjg/edit?usp=sharing)
 
 #### CustomUser: Model representing a user (extends Django’s built in User model - it can be found in users/models.py)
@@ -81,7 +81,7 @@ AVAILIBILITY_TYPE: contains pre-coded list of days of the week
 
 availability: converted AVAILABILITY-TYPE list into choosable options
 
-### URL Routes/Mapping
+## URL Routes/Mapping
 #### path('', views.index, name='index') 
 Side Hustles home screen 
 
@@ -109,7 +109,7 @@ Form to upload image to serve as new profile picture. You must be logged in to c
 #### path('new_account', views.new_account, name="new_account") 
 Non-users can make an account here. You cannot be logged in.
 
-#### Authentication/Authorization
+## Authentication/Authorization
 Our application’s login/logout and user interaction functionality is dependent on context. Subsequently, when a user is logged in and authenticated, they will be able to navigate to their profile and interact with forms that logged out users cannot. Additionally, on product pages, users are able to submit reviews that provide insight about what a particular vendor is offering. 
 Each page that makes use of functionality that is specific to authentication/authorization is explained in detail below: 
 
@@ -128,12 +128,12 @@ The My Profile page enables users to make changes to their personal information 
 ##### Specific Service Page (product.html)
 The product.html page focuses on a specific service, particularly the service that the user clicks on to be redirected to this page. Users are able to submit a review (via a form) on these pages. If the user logs in or out on this page, they will remain on this page. 
 
-#### Team Choice
+## Team Choice
 Side Hustles is college student oriented application. Unlike our sources of inspiration, Etsy and Amazon, it is likely that buyers and sellers will know each other from classes, meeting on campus, their networks, and etc. Subsequently, our application’s team choice is to implement a means of uploading, storing, and displaying profile pictures using the database. Profile pictures are a salient component on social media. By making use of them in our application, users will be able to identify people that they will interact with as they look for their Side Hustle match. 
 
 This change affects our Profile page, as the photo will replace the placeholder image that was on the page up to this point. We implemented the Team Choice by adding an Image File to our Custom User model and pulling the appropriate profile picture into the profile template.
 
-#### Conclusion
+## Conclusion
 Jellyworks has come a long way. Side Hustles has grown significantly since the first project.  Throughout this project, we had a fine-tuned focus and idea of what we wanted to implement because of the previous projects. Subsequently, we were all on the same page: we needed to get our team choice, uploading profile pictures, off the ground. To accomplish this, we read the Mozilla documentation and pulled together all the resources we could find. We ultimately realized, however, that our model structure and decision to extend the default Django user model complicated things. As a result, although we understood the various tutorials we came across, things were not working as they were supposed to (at first). For one thing, we did not understanding how to link particular images to particular users when the default user has been extended. Figuring out how to refer to the extended model was a team effort. Everyone looked into ways to get our application working until a team member was able to push through and find a solution.  
 
 Over the course of the semester, our team has worked hard to learn Django and implement our idea. There were times of frustration, such as when we couldn’t fully grasp a topic e.g. reflecting our idea in a model structure, associated information with particular services, implementing forms throughout the application, and etc.  and relied on internet tutorial after internet tutorial. If we had more time or if we had to do this class again, we probably would have laid out our data model differently, erased ancient non-functional code earlier (in lieu of letting it rot and confuse us later on), and commented more of our code (because much of our code made little sense after awhile). With that being said, there were also times of pride, such as when we were finally able to submit a project or when our semester-long efforts culminated in a successful pitch.
