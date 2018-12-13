@@ -31,7 +31,7 @@ The product.html page focuses on a specific service, particularly the service th
 #### Data Model
 [Data Model Diagram](https://docs.google.com/presentation/d/19vwKNK6Vyh6MzYC5Ext7m2ycqMJo5GNv0LoV1OwoGjg/edit?usp=sharing)
 
-CustomUser: Model representing a user (extends Django’s built in User model - it can be found in users/models.py)
+#### CustomUser: Model representing a user (extends Django’s built in User model - it can be found in users/models.py)
 
 image: contains profile picture associated with a user
 
@@ -41,38 +41,73 @@ last_name: contains the user’s last name (built-in)
 
 username: contains the user’s last name (built-in)
 
-Reviews: Model representing a customer review
+#### Reviews: Model representing a customer review
+
 Service: contains the title of the service
+
 User: contains the name of the user associated with the review
+
 Review_like_count: contains the number of likes that a service has
+
 review_text: contains the text that users input for a review via a form
+
 Editable_text: This is not being used. Review_text serves this purpose
+
 review_date_posted: contains the date a review was posted
 
-Services: Model representing a service characteristics 
+#### Services: Model representing a service characteristics 
+
 service_name: contains the name of the service
+
 service_cost: contains the cost of a service
+
 service_category: contains a service’s category 
+
 service_location: contains the location of a service
+
 service_proficiency: contains a seller’s numerical proficiency level
+
 skill_info: contains a description of the skill/service   
+
 SKILL_TYPE: contains a pre-coded list of skill types
+
 skill: converted SKILL_TYPE list into choosable options
+
 LOCATION_TYPE: contains a pre-coded list of locations
+
 location: converted LOCATION_TYPE list into choosable options
+
 AVAILIBILITY_TYPE: contains pre-coded list of days of the week
+
 availability: converted AVAILABILITY-TYPE list into choosable options
 
-#### URL Routes/Mapping
-path('', views.index, name='index') - Side Hustles home screen 
-path('profile/', views.profile, name="profile") - Profile page where users can change details about themselves. Must be logged in.  
-path('filtersearch/', views.search, name="filtersearch") - Page where users can filter and search for what they want based on their selected criteria.
-path('product/<int:pk>', views.product, name="product") - Specific product page where users can leave reviews. Must be logged in to leave reviews 
-path('about/', views.about, name="about") - Static “About” page
-path('change_password/', views.change_password, name="change_password") - Form to change password. You must be logged in to change your password.
-path('sidehustles/profile_changes/', views.profile_changes, name="profile_changes") - Form to change first and last names. You must be logged in to change your first and last name.
-path('change_picture', views.upload_image, name="change_picture") - Form to upload image to serve as new profile picture. You must be logged in to change your profile picture.
-path('new_account', views.new_account, name="new_account") - Non-users can make an account here. You cannot be logged in.
+### URL Routes/Mapping
+#### path('', views.index, name='index') 
+Side Hustles home screen 
+
+#### path('profile/', views.profile, name="profile") 
+Profile page where users can change details about themselves. Must be logged in.  
+
+#### path('filtersearch/', views.search, name="filtersearch") 
+Page where users can filter and search for what they want based on their selected criteria.
+
+#### path('product/<int:pk>', views.product, name="product") 
+Specific product page where users can leave reviews. Must be logged in to leave reviews 
+
+#### path('about/', views.about, name="about") 
+Static “About” page
+
+#### path('change_password/', views.change_password, name="change_password") 
+Form to change password. You must be logged in to change your password.
+
+#### path('sidehustles/profile_changes/', views.profile_changes, name="profile_changes") 
+Form to change first and last names. You must be logged in to change your first and last name.
+
+#### path('change_picture', views.upload_image, name="change_picture") 
+Form to upload image to serve as new profile picture. You must be logged in to change your profile picture.
+
+#### path('new_account', views.new_account, name="new_account") 
+Non-users can make an account here. You cannot be logged in.
 
 #### Authentication/Authorization
 Our application’s login/logout and user interaction functionality is dependent on context. Subsequently, when a user is logged in and authenticated, they will be able to navigate to their profile and interact with forms that logged out users cannot. Additionally, on product pages, users are able to submit reviews that provide insight about what a particular vendor is offering. 
