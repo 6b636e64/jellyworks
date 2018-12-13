@@ -30,10 +30,15 @@ The product.html page focuses on a specific service, particularly the service th
 
 #### Data Model
 [Data Model Diagram](https://docs.google.com/presentation/d/19vwKNK6Vyh6MzYC5Ext7m2ycqMJo5GNv0LoV1OwoGjg/edit?usp=sharing)
+
 CustomUser: Model representing a user (extends Django’s built in User model - it can be found in users/models.py)
+
 image: contains profile picture associated with a user
+
 first_name: contains the user’s first name (built-in)
+
 last_name: contains the user’s last name (built-in)
+
 username: contains the user’s last name (built-in)
 
 Reviews: Model representing a customer review
