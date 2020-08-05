@@ -8,7 +8,7 @@
 
   
   <div class="col-sm-4 titles">
-    <h1 class="product">{{ service.service_name  }}</h1>
+    <h1 class="product">{{ service.skill_info.title  }}</h1>
     <h2>{{ service.seller_name  }}</h2>
     <button type="button" class="btn-product btn-outline-primary">Message</button>
   </div>
@@ -21,7 +21,7 @@
     <div class="card">
       <div class="card-header">
         <a class="card-link" data-toggle="collapse" href="#collapseOne">
-          How much does {{ service.service_name }} cost?
+          How much does {{ service.skill_info.title }} cost?
         </a>
       </div>
       <div id="collapseOne" class="collapse show" data-parent="#accordion">
@@ -33,7 +33,7 @@
     <div class="card">
       <div class="card-header">
         <a class="collapsed card-link" data-toggle="collapse" href="#collapseTwo">
-        On a scale from 1-10 (1 being very little to 10 being pro), how much experience does {{ service.seller_name }} have?
+        How many likes does {{ service.skill_info.title }} have?
       </a>
       </div>
       <div id="collapseTwo" class="collapse" data-parent="#accordion">
@@ -47,16 +47,34 @@
 
   <div class="col-sm-4 btm-row">
     <h3>Reviews</h3>
-    <div class="customer-review">
+    <!-- <div class="customer-review">
       <p>
       <i class="fa fa-star 2x"></i>{{ service.service_stars }}</p>
-    </div>
+    </div> -->
 
-    <div class="form-group">
-      <label for="comment">Review: {{ review.review_text }}</label>
-      <textarea class="form-control" rows="3" id="comment"></textarea>
-      <button type="button" class="btn-product btn-outline-primary review">Submit</button>
-    </div>
+
+    <form method="POST" class="post-form" action="">{% csrf_token %}
+      <div class="form-group">
+
+        {% if reviews %}
+        
+        {% for review in reviews %}
+        <p>Review: {{ review.review_text }}</p>
+        {% endfor %}
+       
+        <p>Review: {{ review.editable_text }}</p>
+        
+        {% else %}
+        <p>There are no reviews yet.</p>
+        {% endif %}
+        <!--<textarea class="form-control" rows="3" id="comment"></textarea>-->
+        <table>
+          {{form.as_table}}
+        </table>
+
+        <button type="submit" class="btn-product btn-outline-primary review">Submit</button>
+      </div>
+    </form>
   </div>
 </div>
 {% endblock %}

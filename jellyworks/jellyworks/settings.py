@@ -37,7 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'sidehustles.apps.SidehustlesConfig'
+    'sidehustles.apps.SidehustlesConfig',
+    'users.apps.UsersConfig',
+    'django_filters'
 ]
 
 MIDDLEWARE = [
@@ -123,4 +125,8 @@ STATIC_URL = '/static/'
 # Redirect to home URL after login (Default redirects to /accounts/profile/)
 LOGOUT_REDIRECT_URL = 'index'
 
+AUTH_USER_MODEL = 'users.CustomUser'
 
+MEDIA_URL = '/media/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
